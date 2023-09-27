@@ -10,6 +10,7 @@
 # Ignore build results
 [Bb]in/
 [Oo]bj/
+[Oo]bj/Debug
 
 # Ignore NuGet packages
 packages/
