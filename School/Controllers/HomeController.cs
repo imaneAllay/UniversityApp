@@ -16,20 +16,7 @@ namespace School.Controllers
             return View();
         }
 
-        public ActionResult About()
-        {
-            ViewBag.Message = "Your application description page.";
-
-            return View();
-        }
-
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
-            
-        }
+      
 
 
         public ActionResult CreateUser()
@@ -90,6 +77,25 @@ namespace School.Controllers
                 System.Diagnostics.Debug.WriteLine($"Error inserting test student: {ex.Message}");
                 return Content($"Error inserting test student: {ex.Message}");
             }
+
+
+            //public ActionResult SignUp()
+            //{
+            //    return View();
+            //}
+
+            //[HttpPost]
+            //public ActionResult SignUp(User user)
+            //{
+            //    if (ModelState.IsValid)
+            //    {
+            //        context.Users.Add(user);
+            //        context.SaveChanges();
+            //        return RedirectToAction("Index");
+            //    }
+            //    return View(user);
+            //}
+
 
 
         }
