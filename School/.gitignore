@@ -14,6 +14,8 @@
 
 # Ignore NuGet packages
 packages/
+obj/
+obj/Debug
 
 # Ignore user-specific files
 *.suo
