@@ -1,9 +1,4 @@
 ﻿using School.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
 
 namespace School.Controllers
 {
@@ -16,7 +11,7 @@ namespace School.Controllers
             return View();
         }
 
-      
+
 
 
         public ActionResult CreateUser()
@@ -46,7 +41,7 @@ namespace School.Controllers
                 // Log and handle any exceptions
                 //System.Diagnostics.Debug.WriteLine($"Error inserting test user: {ex.Message}");
                 //return Content($"Error inserting test user: {ex.Message}");
-                return View(); 
+                return View();
             }
         }
         public ActionResult CreateStudent()

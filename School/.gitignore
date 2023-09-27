@@ -1,7 +1,24 @@
+# Ignore Visual Studio temporary files
+*.obj
+*.pdb
+*.user
+*.suo
+*.cache
+*.vscode
+*.sln.docstates
 
-# Ignore compiled binaries and libraries
+# Ignore build results
+[Bb]in/
+[Oo]bj/
 
-/obj/Debug/
-/lib/
-/bin/
-/packages/
+# Ignore NuGet packages
+packages/
+
+# Ignore user-specific files
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Ignore Rider directory
+.idea/

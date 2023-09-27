@@ -1,6 +1,4 @@
-﻿using MongoDB.Driver;
-using School.Models;
-using System.Configuration; // For traditional ASP.NET
+﻿using School.Models;
 
 public class MongoDbContext
 {
