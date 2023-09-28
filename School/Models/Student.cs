@@ -1,4 +1,8 @@
-﻿public class Student
+﻿using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
+using System;
+
+public class Student
 {
     [BsonId]
     [BsonRepresentation(BsonType.ObjectId)]

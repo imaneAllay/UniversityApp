@@ -1,4 +1,6 @@
-﻿namespace School
+﻿using System.Web.Mvc;
+
+namespace School
 {
     public class FilterConfig
     {

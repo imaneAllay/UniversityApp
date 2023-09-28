@@ -1,12 +1,16 @@
 ﻿using School.Models;
+using System;
+using System.Collections.Generic;
+using System.Web.Mvc;
 
 namespace School.Controllers
 {
     public class HomeController : Controller
     {
         private readonly MongoDbContext dbContext = new MongoDbContext();
+        private IEnumerable<Student> studentsToInsert;
 
-        public ActionResult Index()
+        public ActionResult Login()
         {
             return View();
         }
@@ -14,36 +18,87 @@ namespace School.Controllers
 
 
 
-        public ActionResult CreateUser()
+        //public ActionResult CreateUser()
+        //{
+        //    try
+        //    {
+        //        // Create a test user document
+        //        var testUser = new User
+        //        {
+        //            Username = "TestUser",
+        //            Password = "Password123", // Note: Password hashing should be used in a real application.
+        //            Email = "testuser@example.com",
+        //            Roles = new string[] { "User" } // You can set roles as needed.
+        //        };
+
+        //        // Insert the test user into the "User" collection
+        //        var usersCollection = dbContext.Users;
+        //        usersCollection.InsertOne(testUser);
+
+        //        // Log a success message
+        //        System.Diagnostics.Debug.WriteLine("Test user inserted successfully!");
+
+        //        return Content("Test user inserted successfully!"); // Return a message to the user
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        // Log and handle any exceptions
+        //        //System.Diagnostics.Debug.WriteLine($"Error inserting test user: {ex.Message}");
+        //        //return Content($"Error inserting test user: {ex.Message}");
+        //        return View();
+        //    }
+        //}
+
+        public ActionResult CreateUsers()
         {
+
             try
             {
-                // Create a test user document
-                var testUser = new User
+
+                var userToInsert = new List<User>
+            {
+                new User
                 {
-                    Username = "TestUser",
-                    Password = "Password123", // Note: Password hashing should be used in a real application.
-                    Email = "testuser@example.com",
-                    Roles = new string[] { "User" } // You can set roles as needed.
-                };
+                        Username = "allay",
+                        Password = "1243",
+                        Role= UserRole.Teacher
 
-                // Insert the test user into the "User" collection
+                },
+                new User
+                {
+                    Username = "velasquez",
+                     Password = "134",
+                     Role= UserRole.Teacher
+
+                },
+                new User
+                {
+                     Username = "Parez",
+                     Password = "1235",
+                     Role= UserRole.Student
+
+                },
+
+            };
+
+
                 var usersCollection = dbContext.Users;
-                usersCollection.InsertOne(testUser);
+                usersCollection.InsertMany(userToInsert);
 
-                // Log a success message
-                System.Diagnostics.Debug.WriteLine("Test user inserted successfully!");
+                //System.Diagnostics.Debug.WriteLine("Users inserted successfully!");
 
-                return Content("Test user inserted successfully!"); // Return a message to the user
+                //return Content("Users inserted successfully!");
+                return View();
             }
             catch (Exception ex)
             {
-                // Log and handle any exceptions
-                //System.Diagnostics.Debug.WriteLine($"Error inserting test user: {ex.Message}");
-                //return Content($"Error inserting test user: {ex.Message}");
-                return View();
+                System.Diagnostics.Debug.WriteLine($"Error inserting Users: {ex.Message}");
+                return Content($"Error inserting Users: {ex.Message}");
+
             }
+            
         }
+
         public ActionResult CreateStudent()
         {
             try

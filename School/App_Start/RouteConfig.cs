@@ -1,4 +1,7 @@
-﻿namespace School
+﻿using System.Web.Mvc;
+using System.Web.Routing;
+
+namespace School
 {
     public class RouteConfig
     {
@@ -14,11 +17,6 @@
 
             );
 
-            routes.MapRoute(
-    name: "InsertTestStudent",
-    url: "Test/InsertTestStudent", // Define your desired URL path
-    defaults: new { controller = "Home", action = "InsertTestStudent" }
-);
         }
 
 

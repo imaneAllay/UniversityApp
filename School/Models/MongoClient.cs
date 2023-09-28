@@ -1,4 +1,6 @@
-﻿using School.Models;
+﻿using MongoDB.Driver;
+using School.Models;
+using System.Configuration;
 
 public class MongoDbContext
 {
