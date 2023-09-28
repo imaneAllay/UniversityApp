@@ -1,7 +1,9 @@
-﻿using School.Models;
+﻿using MongoDB.Driver;
+using School.Models;
 using System;
 using System.Collections.Generic;
 using System.Web.Mvc;
+using System.Web.UI.WebControls;
 
 namespace School.Controllers
 {
@@ -12,143 +14,99 @@ namespace School.Controllers
 
         public ActionResult Login()
         {
+             var user = new User();
             return View("Login");
         }
 
+        [HttpPost]
+        public ActionResult Login(User user)
+        {
+            if (ModelState.IsValid)
+            {
+                // Authenticate the user based on credentials
+                var filter = Builders<User>.Filter.Eq(u => u.Username, user.Username) &
+             Builders<User>.Filter.Eq(u => u.Password, user.Password);
 
+                var authenticatedUser = dbContext.Users.Find(filter).FirstOrDefault();
 
+                if (authenticatedUser != null)
+                {
+                    // User is authenticated, get their role
+                    var userRole = authenticatedUser.Role;
 
-        //public ActionResult CreateUser()
+                    if (userRole == UserRole.Teacher)
+                    {
+                        // Redirect to the Teacher Dashboard
+                        return RedirectToAction("TeacherD", "Teacher");
+                    }
+                    else if (userRole == UserRole.Student)
+                    {
+                        // Redirect to the Student Dashboard
+                        return RedirectToAction("StudentD", "Student");
+                    }
+                    else
+                    {
+                        // Handle other roles or scenarios
+                    }
+                }
+                else
+                {
+                    ModelState.AddModelError("", "Invalid username or password");
+                }
+            }
+
+            // If authentication fails or there are validation errors, return to the login view
+            return View();
+        }
+
+        //public ActionResult CreateUsers()
         //{
+
         //    try
         //    {
-        //        // Create a test user document
-        //        var testUser = new User
+
+        //        var userToInsert = new List<User>
+        //    {
+        //        new User
         //        {
-        //            Username = "TestUser",
-        //            Password = "Password123", // Note: Password hashing should be used in a real application.
-        //            Email = "testuser@example.com",
-        //            Roles = new string[] { "User" } // You can set roles as needed.
-        //        };
+        //                Username = "imane",
+        //                Password = "123",
+        //                Role= UserRole.Teacher
 
-        //        // Insert the test user into the "User" collection
+        //        },
+        //        new User
+        //        {
+        //            Username = "karina",
+        //             Password = "1234",
+        //             Role= UserRole.Teacher
+
+        //        },
+               
+
+        //    };
+
+
         //        var usersCollection = dbContext.Users;
-        //        usersCollection.InsertOne(testUser);
+        //        usersCollection.InsertMany(userToInsert);
 
-        //        // Log a success message
-        //        System.Diagnostics.Debug.WriteLine("Test user inserted successfully!");
+        //        System.Diagnostics.Debug.WriteLine("Users inserted successfully!");
 
-        //        return Content("Test user inserted successfully!"); // Return a message to the user
+        //        return Content("Users inserted successfully!");
+        //        //return View();
         //    }
         //    catch (Exception ex)
         //    {
-        //        // Log and handle any exceptions
-        //        //System.Diagnostics.Debug.WriteLine($"Error inserting test user: {ex.Message}");
-        //        //return Content($"Error inserting test user: {ex.Message}");
-        //        return View();
+        //        System.Diagnostics.Debug.WriteLine($"Error inserting Users: {ex.Message}");
+        //        return Content($"Error inserting Users: {ex.Message}");
+
         //    }
+
         //}
 
-        public ActionResult CreateUsers()
-        {
-
-            try
-            {
-
-                var userToInsert = new List<User>
-            {
-                new User
-                {
-                        Username = "allay",
-                        Password = "1243",
-                        Role= UserRole.Teacher
-
-                },
-                new User
-                {
-                    Username = "velasquez",
-                     Password = "134",
-                     Role= UserRole.Teacher
-
-                },
-                new User
-                {
-                     Username = "Parez",
-                     Password = "1235",
-                     Role= UserRole.Student
-
-                },
-
-            };
-
-
-                var usersCollection = dbContext.Users;
-                usersCollection.InsertMany(userToInsert);
-
-                //System.Diagnostics.Debug.WriteLine("Users inserted successfully!");
-
-                //return Content("Users inserted successfully!");
-                return View();
-            }
-            catch (Exception ex)
-            {
-                System.Diagnostics.Debug.WriteLine($"Error inserting Users: {ex.Message}");
-                return Content($"Error inserting Users: {ex.Message}");
-
-            }
-            
-        }
-
-        public ActionResult CreateStudent()
-        {
-            try
-            {
-                // Create a test student document
-                var testStudent = new Student
-                {
-                    FirstName = "Test",
-                    LastName = "Student",
-                    EnrollmentDate = DateTime.Now
-                    // Add other properties as needed
-                };
-
-                // Insert the test student into the "students" collection
-                var studentsCollection = dbContext.Students;
-                studentsCollection.InsertOne(testStudent);
-
-                // Log a success message
-                System.Diagnostics.Debug.WriteLine("Test student inserted successfully!");
-
-                return Content("Test student inserted successfully!"); // Return a message to the user
-            }
-            catch (Exception ex)
-            {
-                // Log and handle any exceptions
-                System.Diagnostics.Debug.WriteLine($"Error inserting test student: {ex.Message}");
-                return Content($"Error inserting test student: {ex.Message}");
-            }
-
-
-            //public ActionResult SignUp()
-            //{
-            //    return View();
-            //}
-
-            //[HttpPost]
-            //public ActionResult SignUp(User user)
-            //{
-            //    if (ModelState.IsValid)
-            //    {
-            //        context.Users.Add(user);
-            //        context.SaveChanges();
-            //        return RedirectToAction("Index");
-            //    }
-            //    return View(user);
-            //}
 
 
 
-        }
+
     }
 }
 
