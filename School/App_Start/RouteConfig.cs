@@ -17,6 +17,13 @@ namespace School
 
             );
 
+
+            routes.MapRoute(
+              name: "StudentDashboard",
+              url: "Dashboards/StudentDashboard",
+              defaults: new { controller = "Student", action = "StudentDashboard" }
+          );
+
         }
 
 
