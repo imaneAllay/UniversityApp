@@ -1,4 +1,5 @@
 ﻿
+using Antlr.Runtime.Misc;
 using MongoDB.Driver;
 using School.Models;
 using System;
@@ -52,6 +53,45 @@ namespace School.Controllers
             }
             return View(user);
         }
-       
+
+        [HttpPost]
+        public ActionResult Next(User user)
+        {
+            if (ModelState.IsValid)
+            {
+                
+
+                if (user.Role == UserRole.Student)
+                {
+                    return RedirectToAction("StudentNext");
+                }
+                else if (user.Role == UserRole.Teacher)
+                {
+                    
+                    return RedirectToAction("TeacherNext");
+                }
+               
+            }
+
+            return View("Register", user);
+        }
+
+        
+        [HttpGet]
+        public ActionResult TeacherNext()
+        {
+            
+            return View("TeacherNext");
+        }
+
+        [HttpGet]
+        public ActionResult StudentNext()
+        {
+            
+            return View("StudentNext");
+        }
+
+
+
     }
 }

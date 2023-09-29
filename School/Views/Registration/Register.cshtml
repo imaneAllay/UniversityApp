@@ -12,7 +12,7 @@
 {
     @Html.AntiForgeryToken()
 
-    <div class="form-horizontal">
+    <form class="form-horizontal" method="post" action="@Url.Action("Next", "Registration")">
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
@@ -57,34 +57,27 @@
 
         <div class="form-group">
             @Html.LabelFor(model => model.Role, "Select your role", htmlAttributes: new { @class = "control-label col-md-2" })
-            <select id="role" name="role">
-                <option value="0">Teacher</option>
-                <option value="1">Student</option>
-            </select>
+            <div class="col-md-10">
+                <select id="role" name="role" class="form-control">
+                    <option value="0">Teacher</option>
+                    <option value="1">Student</option>
+                </select>
+            </div>
 
-            @*@if (Model.Role == School.Models.UserRole.Student)
-            {
-                <div>Number 1</div>
+                <input type="hidden" id="selectedRole" name="selectedRole" value="">
 
-
-            }
-
-            @if (Model.Role == School.Models.UserRole.Teacher)
-            {
-                <div>Number 0</div>
+                <hr />
+                <button type="submit" id="nextButton" class="custom-button">Next</button>
 
 
-            }*@
+            </div>
 
-
-        </div>
-
-        <div class="form-group">
+            @*<div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <input type="submit" value="Submit" class="custon-button" />
             </div>
-        </div>
-    </div>
+        </div>*@
+        </form>
 
 
 }
