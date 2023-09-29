@@ -2,6 +2,8 @@
 using School.Models;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.Linq;
 using System.Web.Mvc;
 using System.Web.UI.WebControls;
 
@@ -21,83 +23,42 @@ namespace School.Controllers
         [HttpPost]
         public ActionResult Login(User user)
         {
-            if (ModelState.IsValid)
+            Debug.WriteLine("Login action reached.");
+
+            if (!ModelState.IsValid)
             {
-
-                var filter = Builders<User>.Filter.Eq(u => u.Username, user.Username) &
-             Builders<User>.Filter.Eq(u => u.Password, user.Password);
-
-                var authenticatedUser = dbContext.Users.Find(filter).FirstOrDefault();
-
-                if (authenticatedUser != null)
-                {
-
-                    var userRole = authenticatedUser.Role;
-
-                    if (userRole == UserRole.Teacher)
-                    {
-                        return RedirectToAction("TeacherD", "Teacher");
-                    }
-                    else if (userRole == UserRole.Student)
-                    {
-
-                        return RedirectToAction("StudentD", "Student");
-                    }
-
-                }
-                else
-                {
-                    ModelState.AddModelError("", "Invalid username or password");
-                }
+                
+                var errors = ModelState.Values.SelectMany(v => v.Errors).Select(e => e.ErrorMessage);
+                
             }
 
+            var filter = Builders<User>.Filter.Eq(u => u.Username, user.Username) &
+                            Builders<User>.Filter.Eq(u => u.Password, user.Password);
 
-            return View();
+            var authenticatedUser = dbContext.Users.Find(filter).FirstOrDefault();
+
+            if (authenticatedUser != null)
+            {
+                var userRole = authenticatedUser.Role;
+
+                if (userRole == UserRole.Teacher)
+                {
+                    return RedirectToAction("TeacherD", "Teacher");
+                }
+                else if (userRole == UserRole.Student)
+                {
+                    return RedirectToAction("StudentD", "Student");
+                }
+            }
+            else
+            {
+                ModelState.AddModelError("", "Invalid username or password");
+            }
+
+            return View("Login", user);
         }
 
-        //public ActionResult CreateUsers()
-        //{
 
-        //    try
-        //    {
-
-        //        var userToInsert = new List<User>
-        //    {
-        //        new User
-        //        {
-        //                Username = "imane",
-        //                Password = "123",
-        //                Role= UserRole.Teacher
-
-        //        },
-        //        new User
-        //        {
-        //            Username = "karina",
-        //             Password = "1234",
-        //             Role= UserRole.Teacher
-
-        //        },
-
-
-        //    };
-
-
-        //        var usersCollection = dbContext.Users;
-        //        usersCollection.InsertMany(userToInsert);
-
-        //        System.Diagnostics.Debug.WriteLine("Users inserted successfully!");
-
-        //        return Content("Users inserted successfully!");
-        //        //return View();
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        System.Diagnostics.Debug.WriteLine($"Error inserting Users: {ex.Message}");
-        //        return Content($"Error inserting Users: {ex.Message}");
-
-        //    }
-
-        //}
 
 
 
@@ -105,4 +66,3 @@ namespace School.Controllers
 
     }
 }
-
