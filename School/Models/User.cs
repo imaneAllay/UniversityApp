@@ -30,7 +30,7 @@ namespace School.Models
         [Required(ErrorMessage = "Last Name is required")]
         public string LastName { get; set; }
 
-
+        [Required(ErrorMessage = "Role is required")]
         public UserRole Role { get; set; }
     }
 
