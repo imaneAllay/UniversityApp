@@ -14,7 +14,7 @@ namespace School.Controllers
 
         public ActionResult Login()
         {
-             var user = new User();
+            var user = new User();
             return View("Login");
         }
 
@@ -23,7 +23,7 @@ namespace School.Controllers
         {
             if (ModelState.IsValid)
             {
-                // Authenticate the user based on credentials
+
                 var filter = Builders<User>.Filter.Eq(u => u.Username, user.Username) &
              Builders<User>.Filter.Eq(u => u.Password, user.Password);
 
@@ -31,23 +31,19 @@ namespace School.Controllers
 
                 if (authenticatedUser != null)
                 {
-                    // User is authenticated, get their role
+
                     var userRole = authenticatedUser.Role;
 
                     if (userRole == UserRole.Teacher)
                     {
-                        // Redirect to the Teacher Dashboard
                         return RedirectToAction("TeacherD", "Teacher");
                     }
                     else if (userRole == UserRole.Student)
                     {
-                        // Redirect to the Student Dashboard
+
                         return RedirectToAction("StudentD", "Student");
                     }
-                    else
-                    {
-                        // Handle other roles or scenarios
-                    }
+
                 }
                 else
                 {
@@ -55,7 +51,7 @@ namespace School.Controllers
                 }
             }
 
-            // If authentication fails or there are validation errors, return to the login view
+
             return View();
         }
 
@@ -81,7 +77,7 @@ namespace School.Controllers
         //             Role= UserRole.Teacher
 
         //        },
-               
+
 
         //    };
 

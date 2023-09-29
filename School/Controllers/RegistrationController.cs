@@ -55,25 +55,26 @@ namespace School.Controllers
         }
 
         [HttpPost]
-        public ActionResult Next(User user)
+        public ActionResult Next()
         {
-            if (ModelState.IsValid)
-            {
-                
+            //if (ModelState.IsValid)
+            //{
 
-                if (user.Role == UserRole.Student)
-                {
-                    return RedirectToAction("StudentNext");
-                }
-                else if (user.Role == UserRole.Teacher)
-                {
-                    
-                    return RedirectToAction("TeacherNext");
-                }
-               
-            }
 
-            return View("Register", user);
+            //    if (user.Role == UserRole.Student)
+            //    {
+            //        return RedirectToAction("StudentNext");
+            //    }
+            //    else if (user.Role == UserRole.Teacher)
+            //    {
+
+            //        return RedirectToAction("TeacherNext");
+            //    }
+
+            //}
+
+            //return View("Register", user);
+            return Content("");
         }
 
         
