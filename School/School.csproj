@@ -224,11 +224,13 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\RegistrationController.cs" />
     <Compile Include="Controllers\StudentController.cs" />
     <Compile Include="Controllers\TeacherController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Contacts.cs" />
     <Compile Include="Models\MongoClient.cs" />
     <Compile Include="Models\Student.cs" />
     <Compile Include="Models\Teacher.cs" />
@@ -290,6 +292,9 @@
     <Content Include="Views\Home\Login.cshtml" />
     <Content Include="Views\Student\StudentD.cshtml" />
     <Content Include="Views\Teacher\TeacherD.cshtml" />
+    <Content Include="Views\Registration\Register.cshtml" />
+    <Content Include="Views\Registration\TeacherNext.cshtml" />
+    <Content Include="Views\Registration\StudentNext.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
