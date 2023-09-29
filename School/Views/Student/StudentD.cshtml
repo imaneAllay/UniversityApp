@@ -1,15 +1,16 @@
-﻿@*@model Student
+﻿@using School.Models
+@model Student
 
 @{
     ViewBag.Title = "StudentD";
-}*@
+}
 
 <h2>Student Dashboard</h2>
 
 <div>
     
     <hr />
-    @*<dl class="dl-horizontal">
+    <dl class="dl-horizontal">
         <dt>
             @Html.DisplayNameFor(model => model.FirstName)
         </dt>
@@ -34,9 +35,65 @@
             @Html.DisplayFor(model => model.EnrollmentDate)
         </dd>
 
-    </dl>*@
+        <dt>
+            @Html.DisplayNameFor(model => model.Role)
+        </dt>
+
+
+        <dd>
+            @Html.DisplayFor(model => model.Role)
+        </dd>
+
+    </dl>
+
+    <h3>
+        Subject
+    </h3>
+
+     <table class="Table">
+         <thead>
+             <tr>
+                 <th>Day</th>
+                 <th>Time</th>
+                 <th>Subject</th>
+             </tr>
+         </thead>
+         
+         <tbody>
+             @foreach (var scheduleItem in Model.Schedule)
+            {
+                <tr>
+                    <td>@scheduleItem.Day</td>
+                    <td>@scheduleItem.Time</td>
+                    <td>@scheduleItem.Subject.Name</td>
+                </tr>
+            }
+         </tbody>
+     </table>
+
+    <h3>Assignment</h3>
+    <table class="Table">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+    
+        <tbody>
+
+            @foreach (var assignment in Model.Assignments)
+            {
+                <tr>
+                    <td>@assignment.Title</td>
+                    <td>@assignment.Status</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
 </div>
 <p>
-    @*@Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |*@
-    @*@Html.ActionLink("Back to List", "Login")*@
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) 
+    @Html.ActionLink("Back to List", "Login")
 </p>
