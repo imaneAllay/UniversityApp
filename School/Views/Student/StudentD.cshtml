@@ -1,42 +1,119 @@
-﻿@*@model Student
+﻿@using School.Models
+@model Student
 
 @{
     ViewBag.Title = "StudentD";
-}*@
+}
 
-<h2>Student Dashboard</h2>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+    }
 
-<div>
-    
+    .container {
+        padding: 20px;
+    }
+
+    .Table {
+        border-collapse: collapse;
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+        .Table th, .Table td {
+            border: 1px solid #ddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        .Table th {
+            background-color: #f2f2f2;
+        }
+
+    .dl-horizontal dt {
+        float: left;
+        width: 160px;
+        overflow: hidden;
+        clear: left;
+        text-align: right;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    .dl-horizontal dd {
+        margin-left: 180px;
+    }
+
+    .action-links a {
+        margin-right: 10px;
+    }
+</style>
+
+<div class="container">
+    <h2>Student Dashboard</h2>
+
     <hr />
-    @*<dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.FirstName)
-        </dt>
+    <dl class="dl-horizontal">
+        <dt>First Name</dt>
+        <dd>@Model.FirstName</dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.FirstName)
-        </dd>
+        <dt>Last Name</dt>
+        <dd>@Model.LastName</dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.LastName)
-        </dt>
+        <dt>Enrollment Date</dt>
+        <dd>@Model.EnrollmentDate.ToString("yyyy-MM-dd")</dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.LastName)
-        </dd>
+        <dt>Role</dt>
+        <dd>@Model.Role</dd>
+    </dl>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.EnrollmentDate)
-        </dt>
+    <h3>Subject</h3>
 
-        <dd>
-            @Html.DisplayFor(model => model.EnrollmentDate)
-        </dd>
+    <table class="Table">
+        <thead>
+            <tr>
+                <th>Day</th>
+                <th>Time</th>
+                <th>Subject</th>
+            </tr>
+        </thead>
 
-    </dl>*@
+        <tbody>
+            @foreach (var scheduleItem in Model.Schedule)
+            {
+                <tr>
+                    <td>@scheduleItem.Day</td>
+                    <td>@scheduleItem.Time</td>
+                    <td>@scheduleItem.Subject.Name</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <h3>Assignment</h3>
+    <table class="Table">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (var assignment in Model.Assignments)
+            {
+                <tr>
+                    <td>@assignment.Title</td>
+                    <td>@assignment.Status</td>
+                </tr>
+            }
+        </tbody>
+    </table>
 </div>
-<p>
-    @*@Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |*@
-    @*@Html.ActionLink("Back to List", "Login")*@
-</p>
+<div class="profile-actions">
+    <a href="@Url.Action("Profile", "Teacher")" class="btn btn-primary">View Profile</a>
+    <a href="@Url.Action("EditProfile", "Teacher")" class="btn btn-secondary">Edit Profile</a>
+    <a href="@Url.Action("ChangePassword", "ChangePassword")" class="btn btn-warning">Change Password</a>
+</div>

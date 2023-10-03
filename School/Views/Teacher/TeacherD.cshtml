@@ -1,8 +1,112 @@
-﻿@*@model Teacher*@
+﻿@using School.Models
+@model School.Models.Teacher
 
 @{
     ViewBag.Title = "TeacherD";
 }
 
-<h2>Teacher Dashboard</h2>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+    }
 
+    .container {
+        padding: 20px;
+    }
+
+    .Table {
+        border-collapse: collapse;
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+        .Table th, .Table td {
+            border: 1px solid #ddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        .Table th {
+            background-color: #f2f2f2;
+        }
+
+    .dl-horizon dt {
+        float: left;
+        width: 160px;
+        overflow: hidden;
+        clear: left;
+        text-align: right;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    .dl-horizon dd {
+        margin-left: 180px;
+    }
+
+    .action-links a,
+    .profile-actions a {
+        margin-right: 10px;
+    }
+</style>
+
+<div class="container">
+    <h2>Teacher Dashboard</h2>
+    <hr />
+
+    <dl class="dl-horizon">
+        <dt>Teacher Name</dt>
+        <dd>@Model.TeacherName</dd>
+
+        <dt>Role</dt>
+        <dd>@Model.Role</dd>
+
+        <dt>Program Number</dt>
+        <dd>@Model.ProgramNumber</dd>
+    </dl>
+
+    <h3>Students</h3>
+    <table class="Table">
+        <thead>
+            <tr>
+                <th>Name</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var student in Model.Students)
+            {
+                <tr>
+                    <td>@student.FirstName</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <h3>Schedule</h3>
+    <table class="Table">
+        <thead>
+            <tr>
+                <th>Day</th>
+                <th>Time</th>
+                <th>Subject</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var scheduleItem in Model.Schedule)
+            {
+                <tr>
+                    <td>@scheduleItem.Day</td>
+                    <td>@scheduleItem.Time</td>
+                    <td>@scheduleItem.Subject</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+<div class="profile-actions">
+    <a href="@Url.Action("Profile", "Teacher")" class="btn btn-primary">View Profile</a>
+    <a href="@Url.Action("EditProfile", "Teacher")" class="btn btn-secondary">Edit Profile</a>
+    <a href="@Url.Action("ChangePassword", "ChangePassword")" class="btn btn-warning">Change Password</a>
+</div>
