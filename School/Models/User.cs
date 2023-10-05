@@ -10,15 +10,24 @@ namespace School.Models
     {
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
-        public string Id { get; set; }
+        public ObjectId Id { get; set; }
 
       
         public string Username { get; set; }
 
         public string Password { get; set; }
 
+        public string Salt { get; set; }
+
+        [Required(ErrorMessage = "Email is required.")]
+        [RegularExpression(@"^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}" +
+                            @"\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\" +
+                            @".)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$",
+                            ErrorMessage = "Email is not valid")]
         public string Email { get; set; }
 
+        [Required(ErrorMessage = "Phone number is required")]
+        [RegularExpression(@"^\d{10}$", ErrorMessage ="Phone number must be 10 digits.")]
         public string PhoneNumber { get; set; }
 
         public string FirstName { get; set; }

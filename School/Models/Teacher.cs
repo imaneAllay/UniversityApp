@@ -11,8 +11,8 @@ namespace School.Models
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
 
-        public int Id { get; set; }
-        public string UserId { get; set; }
+        public ObjectId Id { get; set; }
+        public ObjectId UserId { get; set; }
         public string TeacherName { get; set; }
         public string Role { get; set; }
         public string ProgramNumber { get; set; }
