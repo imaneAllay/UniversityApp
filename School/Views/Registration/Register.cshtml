@@ -13,55 +13,99 @@
     <script src="~/Scripts/Register/Register.js"></script>
 
 </head>
-<body>
-    <h1>User Registration</h1>
-    <form action="/Registration/Register" method="post">
+<body class="bg-light">
+    <div class="d-flex align-items-center vh-100">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-6">
+                    <h1 class="mb-4">User Registration</h1>
+                    <form class="form-horizontal" action="/Registration/Register" method="post">
+                        <div class="form-group">
+                            <label for="username">Username:</label>
+                            <div class=" col-md-10">
+                                <input type="text" id="username" name="username" required onkeyup="validateUsername(this.value)"><br>
+                                <span class="username-error"></span>
+                            </div>
+                        </div>
 
-        <label for="username">Username:</label>
-        <input type="text" id="username" name="username" required onkeyup="validateUsername(this.value)"><br>
-        <span class="username-error"></span>
+                        <div class="form-group">
+                            <label for="password">Password:</label>
+                            <div class="col-md-10">
+                                <input type="password" id="password" name="password" required onkeyup="validatePassword(this.value)"><br>
+                                <span class="password-error"></span>
+                            </div>
+                        </div>
 
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" required onkeyup="validatePassword(this.value)"><br>
-        <span class="password-error"></span>
+                        <div class="form-group">
+                            <label for="email">Email:</label>
+                            <div class="col-md-10">
+                                <input type="email" id="email" name="email" required onkeyup="validateEmail(this.value)"><br>
+                                <span class="email-error"></span>
+                            </div>
+                        </div>
 
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required onkeyup="validateEmail(this.value)"><br>
-        <span class="email-error"></span>
+                        <div class="form-group">
+                            <label for="phoneNumber">Phone Number:</label>
+                            <div class="col-md-10">
+                                <input type="tel" id="phoneNumber" name="phoneNumber" onkeyup="validatePhoneNumber(this.value)"><br>
+                                <span class="phone-error"></span>
+                            </div>
+                        </div>
 
-        <label for="phoneNumber">Phone Number:</label>
-        <input type="tel" id="phoneNumber" name="phoneNumber" onkeyup="validatePhoneNumber(this.value)"><br>
-        <span class="phone-error"></span>
+                        <div class="form-group">
+                            <label for="firstName">First Name:</label>
+                            <div class="col-md-10">
+                                <input type="text" id="firstName" name="firstName" required onkeyup="validateFirstName(this.value)" ><br>
+                                <span class="Fname-error"></span>
+                            </div>
+                        </div>
 
-        <label for="firstName">First Name:</label>
-        <input type="text" id="firstName" name="firstName" required onkeyup="validateFirstName(this.value)"><br>
+                        <div class="form-group">
+                            <label for="lastName">Last Name:</label>
+                            <div class="col-md-10">
+                                <input type="text" id="lastName" name="lastName" required onkeyup="validateLastName(this.value)" ><br>
+                                <span class="Lname-error"></span>
+                            </div>
+                        </div>
 
-        <label for="lastName">Last Name:</label>
-        <input type="text" id="lastName" name="lastName"><br>
+                        <div class="form-group">
+                            <label for="role">Role:</label>
+                            <div class="col-md-10">
+                                <select id="role" name="role" required>
+                                    <option value="Teacher">Teacher</option>
+                                    <option value="Student">Student</option>
+                                </select><br>
+                            </div>
+                        </div>
 
-        <label for="role">Role:</label>
-        <select id="role" name="role" required>
-            <option value="Teacher">Teacher</option>
-            <option value="Student">Student</option>
-        </select><br>
+                        <div class="form-group">
+                            <label for="dateOfBirth">Date of Birth:</label>
+                            <div class="col-md-10">
+                                <input type="date" id="dateOfBirth" name="dateOfBirth" required onchange="validateDOB(this.value)" ><br>
+                                <span class="DOB-error"></span>
+                            </div>
+                        </div>
 
+                        <div class="form-group">
+                            <label for="department">Department:</label>
+                            <div class="col-md-10">
+                                <input type="text" id="department" name="department" required><br>
+                            </div>
+                        </div>
 
-        <label for="dateOfBirth">Date of Birth:</label>
-        <input type="date" id="dateOfBirth" name="dateOfBirth"><br>
+                        <div class="form-group">
+                            <label for="enrollmentDate">Enrollment Date:</label>
+                            <div class="col-md-10">
+                                <input type="date" id="enrollmentDate" name="enrollmentDate" required onchange="validateEnrollmentD(this.value)"><br>
+                                <span class="EnrollmentD-error"></span>
+                            </div>
+                        </div>
+                        <input type="submit" value="Register" class="custom-button" onclick="return validateForm();">
 
-
-        <label for="department">Department:</label>
-        <input type="text" id="department" name="department"><br>
-
-
-        <label for="enrollmentDate">Enrollment Date:</label>
-        <input type="date" id="enrollmentDate" name="enrollmentDate"><br>
-
-        <input type="submit" value="Register" class="custom-button" onclick="return validateForm();">
-    </form>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
-
-
-
-

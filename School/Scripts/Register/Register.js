@@ -1,6 +1,4 @@
-﻿function Phone_keyup(element) {
-    validatePhoneNumber($(element).val(), element);
-}
+﻿
 
 function validatePhoneNumber(value, element) {
     let phoneReg = /^\d{10}$/;
@@ -13,9 +11,7 @@ function validatePhoneNumber(value, element) {
     }
 }
 
-function username_keyup(element) {
-    validateUsername($(element).val(), element);
-}
+
 
 function validateUsername(value, element) {
     let UsernameReg = /^[A-Za-z]\w{5,29}$/;
@@ -28,9 +24,7 @@ function validateUsername(value, element) {
     }
 }
 
-function password_keyup(element) {
-    validatePassword($(element).val(), element);
-}
+
 
 function validatePassword(value, element) {
     let PasswordReg = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/;
@@ -43,9 +37,7 @@ function validatePassword(value, element) {
     }
 }
 
-function email_keyup(element) {
-    validatePassword($(element).val(), element);
-}
+
 
 function validateEmail(value, element) {
     let EmailReg = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
@@ -58,17 +50,86 @@ function validateEmail(value, element) {
     }
 }
 
-function Firstname_keyup(element) {
-    validateFirstName($(element).val(), element);
-}
 
 function validateFirstName(value, element) {
-    let FirstNameReg = /^ [A - Za - z] + $ /;
-    if (!EmailReg.test(value)) {
-        $(".Fname-error").text("Invalid First Name");
-        $(".Fname-error").addClass('Fname-error');
+  
+    let FirstNameReg = /^[A-Za-z]{3,}$/;
+
+    if (!FirstNameReg.test(value)) {
+        $(".Fname-error").text("First Name must be at least 3 characters.");
+        $(element).addClass('Fname-error');
     } else {
         $(".Fname-error").text('');
-        $(".Fname-error").removeClass('Fname-error');
+        $(element).removeClass('Fname-error');
     }
 }
+
+
+
+function validateLastName(value, element) {
+
+    let LastNameReg = /^[A-Za-z]{3,}$/;
+
+    if (!LastNameReg.test(value)) {
+        $(".Lname-error").text("Last Name must be at least 3 characters.");
+        $(element).addClass('Fname-error');
+    } else {
+        $(".Lname-error").text('');
+        $(element).removeClass('Lname-error');
+    }
+}
+
+function validateDOB(value, element) {
+    
+    let DOBReg = /^\d{4}-\d{2}-\d{2}$/;
+
+   
+    if (!DOBReg.test(value)) {
+        $(".DOB-error").text("Please enter a valid date of birth (YYYY-MM-DD).");
+        $(element).addClass('DOB-error');
+    } else {
+       
+        let inputDate = new Date(value);
+        let currentDate = new Date();
+        if (inputDate > currentDate) {
+            $(".DOB-error").text("Date of birth cannot be in the future.");
+            $(element).addClass('DOB-error');
+        } else {
+            
+            let minDOB = new Date(currentDate.getFullYear() - 18, currentDate.getMonth(), currentDate.getDate());
+
+            if (inputDate > minDOB) {
+                $(".DOB-error").text("You must be at least 18 years old.");
+                $(element).addClass('DOB-error');
+            } else {
+               
+                $(".DOB-error").text('');
+                $(element).removeClass('DOB-error');
+            }
+        }
+    }
+}
+
+function validateEnrollmentD(value, element) {
+
+    let EnrollmentDReg = /^\d{4}-\d{2}-\d{2}$/;
+
+
+    if (!EnrollmentDReg.test(value)) {
+        $(".EnrollmentD-error").text("Please enter a valid date (YYYY-MM-DD).");
+        $(element).addClass('EnrollmentD-error');
+    } else {
+
+        let inputDate = new Date(value);
+        let currentDate = new Date();
+        if (inputDate > currentDate) {
+            $(".EnrollmentD-error").text("Enrollement Date cannot be in the future.");
+            $(element).addClass('EnrollmentD-error');
+        }  else {
+
+            $(".EnrollmentD-error").text('');
+            $(element).removeClass('EnrollmentD-error');
+            }
+        }
+    }
+

@@ -17,6 +17,11 @@ namespace School
 
             );
 
+            routes.MapRoute(
+                name: "Register",
+                url: "Registration/Register",
+                defaults: new { controller = "Registration", action = "Register" }
+               );
 
             routes.MapRoute(
               name: "StudentDashboard",
