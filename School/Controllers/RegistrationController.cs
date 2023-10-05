@@ -8,6 +8,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Helpers;
 using System.Web.Mvc;
+using BCrypt.Net;
 
 namespace School.Controllers
 {
