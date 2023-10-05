@@ -64,27 +64,27 @@
 
     <script>
         $(function () {
-            // Example manual validation with jQuery
+          
             $("#loginForm").submit(function (e) {
                 let isValid = true;
 
-                // Check if Username is empty
+               
                 if ($("#Username").val().trim() === "") {
                     $("#usernameError").text("Username is required.");
                     isValid = false;
                 } else {
-                    $("#usernameError").text(""); // Clear error if any
+                    $("#usernameError").text("");
                 }
 
-                // Check if Password is empty
+                
                 if ($("#Password").val().trim() === "") {
                     $("#passwordError").text("Password is required.");
                     isValid = false;
                 } else {
-                    $("#passwordError").text(""); // Clear error if any
+                    $("#passwordError").text(""); 
                 }
 
-                // Prevent form submission if validation failed
+                
                 if (!isValid) {
                     e.preventDefault();
                 }
