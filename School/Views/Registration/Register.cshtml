@@ -4,99 +4,64 @@
     ViewBag.Title = "Register";
 }
 
-<h2>Registration form</h2>
+<!DOCTYPE html>
+<html>
+<head>
 
-<form class="form-horizontal" method="post" action="@Url.Action("Next", "Registration")">
-    @Html.AntiForgeryToken()
-    <hr />
+    <title>User Registration</title>
+    <link rel="stylesheet" type="text/css" href="~/Content/css/validation.css">
+    <script src="~/Scripts/Register/Register.js"></script>
 
- 
-    <div id="validationSummary" class="text-danger"></div>
+</head>
+<body>
+    <h1>User Registration</h1>
+    <form action="/Registration/Register" method="post">
 
-   
-    <div class="form-group">
-        <label for="Username" class="control-label col-md-2">Username</label>
-        <div class="col-md-10">
-            <input type="text" name="Username" id="Username" class="form-control" required />
-            <span id="usernameError" class="text-danger"></span>
-        </div>
-    </div>
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required onkeyup="validateUsername(this.value)"><br>
+        <span class="username-error"></span>
 
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required onkeyup="validatePassword(this.value)"><br>
+        <span class="password-error"></span>
 
-    <div class="form-group">
-        <label for="Password" class="control-label col-md-2">Password</label>
-        <div class="col-md-10">
-            <input type="password" name="Password" id="Password" class="form-control" required />
-            <span id="passwordError" class="text-danger"></span>
-        </div>
-    </div>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required onkeyup="validateEmail(this.value)"><br>
+        <span class="email-error"></span>
 
-    
-    <div class="form-group">
-        <label for="Email" class="control-label col-md-2">Email</label>
-        <div class="col-md-10">
-            <input type="email" name="Email" id="Email" class="form-control" required />
-            <span id="emailError" class="text-danger"></span>
-        </div>
-    </div>
+        <label for="phoneNumber">Phone Number:</label>
+        <input type="tel" id="phoneNumber" name="phoneNumber" onkeyup="validatePhoneNumber(this.value)"><br>
+        <span class="phone-error"></span>
 
-    
-    <div class="form-group">
-        <label for="Name" class="control-label col-md-2">Name</label>
-        <div class="col-md-10">
-            <input type="text" name="Name" id="Name" class="form-control" required />
-            <span id="nameError" class="text-danger"></span>
-        </div>
-    </div>
+        <label for="firstName">First Name:</label>
+        <input type="text" id="firstName" name="firstName" required onkeyup="validateFirstName(this.value)"><br>
 
-    
-    <div class="form-group">
-        <label for="LastName" class="control-label col-md-2">Last Name</label>
-        <div class="col-md-10">
-            <input type="text" name="LastName" id="LastName" class="form-control" required />
-            <span id="lastNameError" class="text-danger"></span>
-        </div>
-    </div>
+        <label for="lastName">Last Name:</label>
+        <input type="text" id="lastName" name="lastName"><br>
+
+        <label for="role">Role:</label>
+        <select id="role" name="role" required>
+            <option value="Teacher">Teacher</option>
+            <option value="Student">Student</option>
+        </select><br>
 
 
-    <div class="form-group">
-        <label for="Role" class="control-label col-md-2">Select your role</label>
-        <div class="col-md-10">
-            <select id="Role" name="Role" class="form-control">
-                <option value="0">Teacher</option>
-                <option value="1">Student</option>
-            </select>
-        </div>
-    </div>
+        <label for="dateOfBirth">Date of Birth:</label>
+        <input type="date" id="dateOfBirth" name="dateOfBirth"><br>
 
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <button type="submit" class="custom-button">Submit</button>
-        </div>
-    </div>
-</form>
 
-<style>
-    .custom-button {
-        background-color: #008CBA;
-        border: none;
-        color: white;
-        padding: 5px 32px;
-        text-align: center;
-        text-decoration: none;
-        display: inline-block;
-        font-size: 16px;
-        margin: 4px 2px;
-        cursor: pointer;
-        border-radius: 4px;
-    }
+        <label for="department">Department:</label>
+        <input type="text" id="department" name="department"><br>
 
-        .custom-button:hover {
-            background-color: #005f5b;
-            color: white;
-        }
-</style>
 
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}
+        <label for="enrollmentDate">Enrollment Date:</label>
+        <input type="date" id="enrollmentDate" name="enrollmentDate"><br>
+
+        <input type="submit" value="Register" class="custom-button" onclick="return validateForm();">
+    </form>
+</body>
+</html>
+
+
+
+
