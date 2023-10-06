@@ -136,12 +136,37 @@ function validateEnrollmentD(value, element) {
 /*---------------------------------------------------------------------------*/
 
 
-    function nextSection() {
-        document.getElementById("Part1").style.display = "none";
-    document.getElementById("Part2").style.display = "block";
+var currentSection = 1;
+var totalSections = 2;
+
+function nextSection() {
+    var currentSectionElement = document.getElementById("Part" + currentSection);
+    currentSectionElement.style.display = "none";
+
+    if (currentSection < totalSections) {
+        currentSection++;
+        var nextSectionElement = document.getElementById("Part" + currentSection);
+        nextSectionElement.style.display = "block";
     }
 
-    function previousSection() {
-        document.getElementById("Part2").style.display = "none";
-    document.getElementById("Part1").style.display = "block";
+    // Show the "Register" button only if the user is on the last section
+    if (currentSection === totalSections) {
+        document.getElementById("registerButton").style.display = "block";
+    } else {
+        document.getElementById("registerButton").style.display = "none";
     }
+}
+
+function previousSection() {
+    var currentSectionElement = document.getElementById("Part" + currentSection);
+    currentSectionElement.style.display = "none";
+
+    if (currentSection > 1) {
+        currentSection--;
+        var previousSectionElement = document.getElementById("Part" + currentSection);
+        previousSectionElement.style.display = "block";
+    }
+
+    // Hide the "Register" button when navigating to a previous section
+    document.getElementById("registerButton").style.display = "none";
+}
