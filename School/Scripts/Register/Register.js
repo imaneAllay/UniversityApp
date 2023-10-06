@@ -81,11 +81,11 @@ function validateLastName(value, element) {
 
 function validateDOB(value, element) {
     
-    let DOBReg = /^\d{4}-\d{2}-\d{2}$/;
+    let DOBReg = /^\d{2}-\d{2}-\d{4}$/;
 
    
     if (!DOBReg.test(value)) {
-        $(".DOB-error").text("Please enter a valid date of birth (YYYY-MM-DD).");
+        $(".DOB-error").text("Please enter a valid date of birth (MM-DD-YYY).");
         $(element).addClass('DOB-error');
     } else {
        
@@ -112,11 +112,11 @@ function validateDOB(value, element) {
 
 function validateEnrollmentD(value, element) {
 
-    let EnrollmentDReg = /^\d{4}-\d{2}-\d{2}$/;
+    let EnrollmentDReg = /^\d{2}-\d{2}-\d{4}$/;
 
 
     if (!EnrollmentDReg.test(value)) {
-        $(".EnrollmentD-error").text("Please enter a valid date (YYYY-MM-DD).");
+        $(".EnrollmentD-error").text("Please enter a valid date of birth (MM-DD-YYY).");
         $(element).addClass('EnrollmentD-error');
     } else {
 
@@ -133,3 +133,15 @@ function validateEnrollmentD(value, element) {
         }
     }
 
+/*---------------------------------------------------------------------------*/
+
+
+    function nextSection() {
+        document.getElementById("Part1").style.display = "none";
+    document.getElementById("Part2").style.display = "block";
+    }
+
+    function previousSection() {
+        document.getElementById("Part2").style.display = "none";
+    document.getElementById("Part1").style.display = "block";
+    }

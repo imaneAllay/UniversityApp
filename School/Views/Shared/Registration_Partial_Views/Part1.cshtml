@@ -1,0 +1,35 @@
+﻿<!-- RegistrationFormPart1.cshtml -->
+
+<div class="form-group">
+    <label for="username">Username:</label>
+    <div class="col-md-10">
+        <input type="text" id="username" name="username" required onkeyup="validateUsername(this.value)"><br>
+        <span class="username-error"></span>
+    </div>
+</div>
+
+<div class="form-group">
+    <label for="password">Password:</label>
+    <div class="col-md-10">
+        <input type="password" id="password" name="password" required onkeyup="validatePassword(this.value)"><br>
+        <span class="password-error"></span>
+    </div>
+</div>
+
+<div class="form-group">
+    <label for="email">Email:</label>
+    <div class="col-md-10">
+        <input type="email" id="email" name="email" required onkeyup="validateEmail(this.value)"><br>
+        <span class="email-error"></span>
+    </div>
+</div>
+
+<div class="form-group">
+    <label for="phoneNumber">Phone Number:</label>
+    <div class="col-md-10">
+        <input type="tel" id="phoneNumber" name="phoneNumber" onkeyup="validatePhoneNumber(this.value)"><br>
+        <span class="phone-error"></span>
+    </div>
+</div>
+
+

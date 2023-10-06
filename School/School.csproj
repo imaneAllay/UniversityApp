@@ -304,9 +304,9 @@
     <Content Include="Views\Student\StudentD.cshtml" />
     <Content Include="Views\Teacher\TeacherD.cshtml" />
     <Content Include="Views\Registration\Register.cshtml" />
-    <Content Include="Views\Registration\TeacherNext.cshtml" />
-    <Content Include="Views\Registration\StudentNext.cshtml" />
     <Content Include="Views\ChangePassword\ChangePassword.cshtml" />
+    <Content Include="Views\Shared\Registration_Partial_Views\Part1.cshtml" />
+    <Content Include="Views\Shared\Registration_Partial_Views\Part2.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
