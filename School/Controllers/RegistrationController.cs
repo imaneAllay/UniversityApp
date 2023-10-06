@@ -31,44 +31,45 @@ namespace School.Controllers
 
         [HttpPost]
 
-        
+
         public ActionResult Register(User user, Teacher profile, Student profile2, Contacts contactInfo)
 
         {
 
-            string inputPassword = user.Password;
-            string salt = BCrypt.Net.BCrypt.GenerateSalt(12);
-            string hashedPassword = BCrypt.Net.BCrypt.HashPassword(inputPassword, salt);
+            //    string inputPassword = user.Password;
+            //    string salt = BCrypt.Net.BCrypt.GenerateSalt(12);
+            //    //string hashedPassword = BCrypt.Net.BCrypt.HashPassword(inputPassword, salt);
 
 
-            if (ModelState.IsValid) 
-            {
-                _context.Users.InsertOne(user);
-                var userId = user.Id;
-                var email = user.Email;
-                var password = hashedPassword;
-                var Salt = salt;
-                var role = user.Role;
-                contactInfo.UserId = userId;
-                contactInfo.Email = email;
+            //    if (ModelState.IsValid) 
+            //    {
+            //        _context.Users.InsertOne(user);
+            //        var userId = user.Id;
+            //        var email = user.Email;
+            //        var password = hashedPassword;
+            //        var Salt = salt;
+            //        var role = user.Role;
+            //        contactInfo.UserId = userId;
+            //        contactInfo.Email = email;
 
 
 
-                if (user.Role == UserRole.Teacher)
-                {
-                    profile.UserId = userId;
-                    _context.Teachers.InsertOne(profile);
-                }
-
-
-            }
+            //        if (user.Role == UserRole.Teacher)
+            //        {
+            //            profile.UserId = userId;
+            //            _context.Teachers.InsertOne(profile);
+            //        }
             return View(user);
+
         }
-
-
-        
-
-
-
-    }
+            
 }
+
+
+
+
+
+
+      }
+    
+    

@@ -20,90 +20,26 @@
                 <div class="col-md-6">
                     <h1 class="mb-4">User Registration</h1>
                     <form class="form-horizontal" action="/Registration/Register" method="post">
-                        <div class="form-group">
-                            <label for="username">Username:</label>
-                            <div class=" col-md-10">
-                                <input type="text" id="username" name="username" required onkeyup="validateUsername(this.value)"><br>
-                                <span class="username-error"></span>
-                            </div>
+
+                       
+
+                        <div id="Part1">
+                            @Html.Partial("~/Views/Shared/Registration_Partial_Views/Part1.cshtml")
+                            <button type="button" onclick="nextSection()" class="custom-button">Next</button>
+
                         </div>
 
-                        <div class="form-group">
-                            <label for="password">Password:</label>
-                            <div class="col-md-10">
-                                <input type="password" id="password" name="password" required onkeyup="validatePassword(this.value)"><br>
-                                <span class="password-error"></span>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="email">Email:</label>
-                            <div class="col-md-10">
-                                <input type="email" id="email" name="email" required onkeyup="validateEmail(this.value)"><br>
-                                <span class="email-error"></span>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="phoneNumber">Phone Number:</label>
-                            <div class="col-md-10">
-                                <input type="tel" id="phoneNumber" name="phoneNumber" onkeyup="validatePhoneNumber(this.value)"><br>
-                                <span class="phone-error"></span>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="firstName">First Name:</label>
-                            <div class="col-md-10">
-                                <input type="text" id="firstName" name="firstName" required onkeyup="validateFirstName(this.value)" ><br>
-                                <span class="Fname-error"></span>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="lastName">Last Name:</label>
-                            <div class="col-md-10">
-                                <input type="text" id="lastName" name="lastName" required onkeyup="validateLastName(this.value)" ><br>
-                                <span class="Lname-error"></span>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="role">Role:</label>
-                            <div class="col-md-10">
-                                <select id="role" name="role" required>
-                                    <option value="Teacher">Teacher</option>
-                                    <option value="Student">Student</option>
-                                </select><br>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="dateOfBirth">Date of Birth:</label>
-                            <div class="col-md-10">
-                                <input type="date" id="dateOfBirth" name="dateOfBirth" required onchange="validateDOB(this.value)" ><br>
-                                <span class="DOB-error"></span>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="department">Department:</label>
-                            <div class="col-md-10">
-                                <input type="text" id="department" name="department" required><br>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="enrollmentDate">Enrollment Date:</label>
-                            <div class="col-md-10">
-                                <input type="date" id="enrollmentDate" name="enrollmentDate" required onchange="validateEnrollmentD(this.value)"><br>
-                                <span class="EnrollmentD-error"></span>
-                            </div>
-                        </div>
-                        <input type="submit" value="Register" class="custom-button" onclick="return validateForm();">
-
-                    </form>
+                <div id="Part2" style="display: none;">
+                    @Html.Partial("~/Views/Shared/Registration_Partial_Views/Part2.cshtml")
+                    <button onclick="previousSection()" class="custom-button">Previous</button>
+                   
                 </div>
+
+
+                <input type="submit" value="Register" id="registerButton" class="custom-button" onclick="return validateForm();">
+
+                </form>
+            </div>
             </div>
         </div>
     </div>
