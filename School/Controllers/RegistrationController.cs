@@ -30,46 +30,51 @@ namespace School.Controllers
         }
 
         [HttpPost]
-
-
         public ActionResult Register(User user, Teacher profile, Student profile2, Contacts contactInfo)
-
         {
+            if (ModelState.IsValid)
+            {
+     
+                string salt = BCrypt.Net.BCrypt.GenerateSalt(12);
+                user.Salt = salt;
+                user.Password = BCrypt.Net.BCrypt.HashPassword(user.Password, salt);
 
-            //    string inputPassword = user.Password;
-            //    string salt = BCrypt.Net.BCrypt.GenerateSalt(12);
-            //    //string hashedPassword = BCrypt.Net.BCrypt.HashPassword(inputPassword, salt);
+                _context.Users.InsertOne(user);
 
+              
+                var userId = user.Id;
 
-            //    if (ModelState.IsValid) 
-            //    {
-            //        _context.Users.InsertOne(user);
-            //        var userId = user.Id;
-            //        var email = user.Email;
-            //        var password = hashedPassword;
-            //        var Salt = salt;
-            //        var role = user.Role;
-            //        contactInfo.UserId = userId;
-            //        contactInfo.Email = email;
+                contactInfo.UserId = userId;
+                contactInfo.Email = user.Email;
 
+             
+                _context.Contacts.InsertOne(contactInfo);
 
+                if (user.Role == UserRole.Teacher)
+                {
+                    profile.UserId = userId;
+                    _context.Teachers.InsertOne(profile);
+                }
+                else if (user.Role == UserRole.Student)
+                {
+                    profile2.UserId = userId;
+                    _context.Students.InsertOne(profile2);
+                }
 
-            //        if (user.Role == UserRole.Teacher)
-            //        {
-            //            profile.UserId = userId;
-            //            _context.Teachers.InsertOne(profile);
-            //        }
+    
+                return RedirectToAction("Register");
+            }
+
+          
             return View(user);
-
         }
-            
-}
+    }
 
 
 
 
 
+    }
 
-      }
-    
-    
+
+

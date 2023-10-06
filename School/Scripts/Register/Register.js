@@ -81,7 +81,7 @@ function validateLastName(value, element) {
 
 function validateDOB(value, element) {
     
-    let DOBReg = /^\d{2}-\d{2}-\d{4}$/;
+    let DOBReg = /^\d{4}-\d{2}-\d{2}$/;
 
    
     if (!DOBReg.test(value)) {
@@ -112,7 +112,7 @@ function validateDOB(value, element) {
 
 function validateEnrollmentD(value, element) {
 
-    let EnrollmentDReg = /^\d{2}-\d{2}-\d{4}$/;
+    let EnrollmentDReg = /^\d{4}-\d{2}-\d{2}$/;
 
 
     if (!EnrollmentDReg.test(value)) {
@@ -149,7 +149,7 @@ function nextSection() {
         nextSectionElement.style.display = "block";
     }
 
-    // Show the "Register" button only if the user is on the last section
+ 
     if (currentSection === totalSections) {
         document.getElementById("registerButton").style.display = "block";
     } else {
@@ -167,6 +167,6 @@ function previousSection() {
         previousSectionElement.style.display = "block";
     }
 
-    // Hide the "Register" button when navigating to a previous section
+
     document.getElementById("registerButton").style.display = "none";
 }
