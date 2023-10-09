@@ -1,5 +1,4 @@
-﻿
-using Antlr.Runtime.Misc;
+﻿using Antlr.Runtime.Misc;
 using MongoDB.Driver;
 using School.Models;
 using System;
@@ -34,20 +33,20 @@ namespace School.Controllers
         {
             if (ModelState.IsValid)
             {
-     
+
                 string salt = BCrypt.Net.BCrypt.GenerateSalt(12);
                 user.Salt = salt;
                 user.Password = BCrypt.Net.BCrypt.HashPassword(user.Password, salt);
 
                 _context.Users.InsertOne(user);
 
-              
+
                 var userId = user.Id;
 
                 contactInfo.UserId = userId;
                 contactInfo.Email = user.Email;
 
-             
+
                 _context.Contacts.InsertOne(contactInfo);
 
                 if (user.Role == UserRole.Teacher)
@@ -61,11 +60,11 @@ namespace School.Controllers
                     _context.Students.InsertOne(profile2);
                 }
 
-    
+
                 return RedirectToAction("Register");
             }
 
-          
+
             return View(user);
         }
     }
@@ -74,7 +73,4 @@ namespace School.Controllers
 
 
 
-    }
-
-
-
+}

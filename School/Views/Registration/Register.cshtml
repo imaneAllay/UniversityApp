@@ -21,7 +21,7 @@
                     <h1 class="mb-4">User Registration</h1>
                     <form class="form-horizontal" action="/Registration/Register" method="post">
 
-                       
+
 
                         <div id="Part1">
                             @Html.Partial("~/Views/Shared/Registration_Partial_Views/Part1.cshtml")
@@ -29,17 +29,17 @@
 
                         </div>
 
-                <div id="Part2" style="display: none;">
-                    @Html.Partial("~/Views/Shared/Registration_Partial_Views/Part2.cshtml")
-                    <button onclick="previousSection()" class="custom-button">Previous</button>
-                   
+                        <div id="Part2" style="display: none;">
+                            @Html.Partial("~/Views/Shared/Registration_Partial_Views/Part2.cshtml")
+                            <button onclick="previousSection()" class="custom-button">Previous</button>
+
+                        </div>
+
+
+                        <input type="submit" value="Register" id="registerButton" class="custom-button" onclick="return validateForm();">
+
+                    </form>
                 </div>
-
-
-                <input type="submit" value="Register" id="registerButton" class="custom-button" onclick="return validateForm();">
-
-                </form>
-            </div>
             </div>
         </div>
     </div>
