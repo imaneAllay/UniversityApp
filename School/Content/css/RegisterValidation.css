@@ -3,6 +3,11 @@
     font-size: 10px;
 }
 
+.department-error{
+    color: purple;
+    font-size: 10px
+}
+
 .username-error {
     color: purple;
     font-size: 10px;
@@ -54,3 +59,11 @@
         background-color: #005f5b;
         color: white;
     }
+
+ /*   #registerButton{
+        display:none;
+    }*/
+/*
+    .error{
+        color:red;
+    }*/

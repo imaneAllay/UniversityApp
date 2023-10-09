@@ -27,7 +27,7 @@
 <div class="form-group">
     <label for="phoneNumber">Phone Number:</label>
     <div class="col-md-10">
-        <input type="tel" id="phoneNumber" name="phoneNumber" onkeyup="validatePhoneNumber(this.value)"><br>
+        <input type="tel" id="phoneNumber" name="phoneNumber" onkeypress="BlockLetters(event)" onkeyup="validatePhoneNumber(this.value)"><br>
         <span class="phone-error"></span>
     </div>
 </div>
