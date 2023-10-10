@@ -1,4 +1,4 @@
-﻿//block numbers
+﻿
 function BlockNumbers(e) {
     if (e.which >= 48 && e.which <= 57) {
         e.preventDefault();
@@ -50,7 +50,16 @@ function validatePassword(value, element) {
     }
 }
 
-
+function validateConfirmPassword(value) {
+    let passwordValue = document.getElementById("password").value;
+    if (value !== passwordValue) {
+        $(".confirmpassword-error").text("Passwords must match");
+        $(".confirmpassword-error").addClass('confirmpassword-error');
+    } else {
+        $(".confirmpassword-error").text('');
+        $(".confirmpassword-error").removeClass('confirmpassword-error');
+    }
+}
 
 function validateEmail(value, element) {
     let EmailReg = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
