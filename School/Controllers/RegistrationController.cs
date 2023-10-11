@@ -61,7 +61,7 @@ namespace School.Controllers
                 }
 
 
-                return RedirectToAction("Register");
+                return RedirectToAction("Login");
             }
 
 
