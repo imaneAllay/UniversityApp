@@ -11,11 +11,11 @@ function BlockLetters(e) {
 }
 
 function validatePhoneNumber(value, event) {
-    let phoneReg = /^[0-9]{3}-[0-9]{3}-[0-9]{4}$/;
+    let phoneReg = /^([0-9]){3}-[0-9]{3}-[0-9]{4}$/;
 
 
     if (!phoneReg.test(value)) {
-        $(".phone-error").text("phone number should be 10 digits  ");
+        $(".phone-error").text("phone number should be this format 555-555-5555  ");
         $(".phone-error").addClass('phone-error');
     } else {
         $(".phone-error").text('');
@@ -136,7 +136,7 @@ function validateDepartment(value, element) {
     let DepartmentReg = /^[A-Za-z\s]{3,50}$/;
 
     if (!DepartmentReg.test(value)) {
-        $(".department-error").text("Department must be atleast 3 characters");
+        $(".department-error").text("Department must be atleast 3 characters and should not start with a number.");
         $(".department-error").addClass("department-error");
     } else {
         $(".department-error").text('');
@@ -169,23 +169,18 @@ function validateEnrollmentD(value, element) {
 
 /*---------------------------------------------------------------------------*/
 
-
 var currentSection = 1;
 var totalSections = 2;
 
 function nextSection() {
-
     var currentSectionElement = document.getElementById("Part" + currentSection);
     currentSectionElement.style.display = "none";
 
-
     if (currentSection < totalSections) {
-        document.getElementById("registerButton").style.display = "none";
         currentSection++;
         var nextSectionElement = document.getElementById("Part" + currentSection);
         nextSectionElement.style.display = "block";
     }
-
 
     if (currentSection === totalSections) {
         document.getElementById("registerButton").style.display = "block";
@@ -204,6 +199,12 @@ function previousSection() {
         previousSectionElement.style.display = "block";
     }
 
-
-    document.getElementById("registerButton").style.display = "none";
+    if (currentSection === totalSections) {
+        document.getElementById("registerButton").style.display = "block";
+    } else {
+        document.getElementById("registerButton").style.display = "none";
+    }
 }
+
+
+
