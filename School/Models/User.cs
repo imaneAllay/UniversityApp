@@ -17,6 +17,7 @@ namespace School.Models
         public string Username { get; set; }
         [Required(ErrorMessage = "Password is required.")]
         public string Password { get; set; }
+        public string confirmPassword { get; set; }
 
         public string Salt { get; set; }
 
@@ -39,9 +40,7 @@ namespace School.Models
 
         public DateTime DateOfBirth { get; set; }
 
-        
-
-      
+   
         public string Department { get; set; } 
 
         public DateTime EnrollmentDate { get; set; } 
