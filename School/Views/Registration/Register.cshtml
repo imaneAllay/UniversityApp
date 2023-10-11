@@ -3,7 +3,7 @@
 @{
     ViewBag.Title = "Register";
 }
-@Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,7 +19,7 @@
             <div class="row justify-content-center">
                 <div class="col-md-6">
                     <h1 class="mb-4">User Registration</h1>
-                    <form class="form-horizontal" action="/Registration/Register" method="post">
+                    <form class="form-horizontal" >
 
 
 
@@ -35,8 +35,8 @@
 
                         </div>
 
-
-                        <input type="submit" value="Register" id="registerButton" class="custom-button" style="display: none;">
+                        
+                        <input type="button" value="Register" id="registerButton" onclick="RegisterBtnClicked();" class="custom-button" style="display: none;">
 
                     </form>
                 </div>
