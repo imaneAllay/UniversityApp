@@ -8,6 +8,7 @@ namespace School.Models
 {
     public class User
     {
+        //server validation
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
         public ObjectId Id { get; set; }
