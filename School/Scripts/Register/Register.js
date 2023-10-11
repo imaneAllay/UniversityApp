@@ -1,4 +1,10 @@
 ﻿
+//$(document).ready(function () {
+//    console.log("ready!");
+//    alert("ready")
+//})
+
+
 function BlockNumbers(e) {
     if (e.which >= 48 && e.which <= 57) {
         e.preventDefault();
@@ -205,6 +211,31 @@ function previousSection() {
         document.getElementById("registerButton").style.display = "none";
     }
 }
+
+function RegisterBtnClicked() {
+    var formData = $('form').serialize();
+    $.ajax({
+        type: 'POST',
+        url: '/Registration/Register', // Update the URL
+        data: formData,
+        success: function (response) {
+            if (response.success) {
+                // Registration was successful
+                alert('Registration successful: ' + response.message);
+                // Additional handling, e.g., redirect to a success page
+            } else {
+                // Registration failed
+                alert('Registration failed: ' + response.message);
+            }
+        },
+        error: function (error) {
+            // Handle the error response, if needed
+            console.error('Form submission error:', error);
+        }
+    });
+
+}
+
 
 
 
