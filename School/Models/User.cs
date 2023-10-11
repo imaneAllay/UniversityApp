@@ -53,8 +53,6 @@ namespace School.Models
         [Required(ErrorMessage = "DateTime is required")]
         public DateTime EnrollmentDate { get; set; }
 
-
-
     }
 
     public enum UserRole
