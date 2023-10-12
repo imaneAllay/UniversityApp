@@ -1,4 +1,10 @@
 ﻿
+//$(document).ready(function () {
+//    console.log("ready!");
+//    alert("ready")
+//})
+
+
 function BlockNumbers(e) {
     if (e.which >= 48 && e.which <= 57) {
         e.preventDefault();
@@ -208,6 +214,27 @@ function previousSection() {
         document.getElementById("registerButton").style.display = "none";
     }
 }
+
+function RegisterBtnClicked() {
+    var formData = $('form').serialize();
+    $.ajax({
+        type: 'POST',
+        url: '/Registration/Register',
+        data: formData,
+        success: function (response) {
+            if (response.success) {
+                alert('Registration successful: ' + response.message);
+            } else {
+                alert('Registration failed: ' + response.message);
+            }
+        },
+        error: function (error) {
+            console.error('Form submission error:', error);
+        }
+    });
+
+}
+
 
 
 
