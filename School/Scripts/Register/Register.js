@@ -1,4 +1,10 @@
 ﻿
+//$(document).ready(function () {
+//    console.log("ready!");
+//    alert("ready")
+//})
+
+
 function BlockNumbers(e) {
     if (e.which >= 48 && e.which <= 57) {
         e.preventDefault();
@@ -40,7 +46,6 @@ function validateUsername(value, element) {
 
 
 function validatePassword(value) {
-    console.log("Validating Password.")
     let PasswordReg = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/;
     if (!PasswordReg.test(value)) {
         $(".password-error").text("Must contain at least one number and one uppercase and lowercase letter, and be at least 8 characters long");
@@ -49,13 +54,37 @@ function validatePassword(value) {
         $(".password-error").text('');
         $(".password-error").removeClass('error');
     }
+    //Invoke the function, passing the value of the input element with id 'confirmPassword' as an argument. 
     validateConfirmPassword(document.getElementById("confirmPassword").value);
 }
+
+
+document.addEventListener("DOMContentLoaded", function () {
+   
+    const togglePassword = document.getElementById('togglePassword');
+    const password = document.getElementById('password');
+
+    togglePassword.addEventListener('click', function (e) {
+        const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+        password.setAttribute('type', type);
+        this.classList.toggle('fa-eye-slash');
+    });
+
+    const toggleConfirmPassword = document.getElementById('toggleConfirmPassword');
+    const confirmPassword = document.getElementById('confirmPassword');
+
+    toggleConfirmPassword.addEventListener('click', function (e) {
+        const type = confirmPassword.getAttribute('type') === 'password' ? 'text' : 'password';
+        confirmPassword.setAttribute('type', type);
+        this.classList.toggle('fa-eye-slash');
+    });
+});
+
 
 function validateConfirmPassword(value) {
     
     let passwordValue = document.getElementById("password").value;
-    if (value !== passwordValue || value === "") {
+    if (value !== passwordValue) {
         $(".confirmpassword-error").text("Passwords must match");
         $(".confirmpassword-error").addClass('error');
     } else {
@@ -208,6 +237,27 @@ function previousSection() {
         document.getElementById("registerButton").style.display = "none";
     }
 }
+
+function RegisterBtnClicked() {
+    var formData = $('form').serialize();
+    $.ajax({
+        type: 'POST',
+        url: '/Registration/Register',
+        data: formData,
+        success: function (response) {
+            if (response.success) {
+                alert('Registration successful: ' + response.message);
+            } else {
+                alert('Registration failed: ' + response.message);
+            }
+        },
+        error: function (error) {
+            console.error('Form submission error:', error);
+        }
+    });
+
+}
+
 
 
 
