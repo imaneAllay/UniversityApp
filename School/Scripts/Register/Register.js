@@ -5,45 +5,71 @@
 //})
 
 
-function BlockNumbers(e) {
-    if (e.which >= 48 && e.which <= 57) {
-        e.preventDefault();
-    }
-}
+//function BlockNumbers(e) {
+//    if (e.which >= 48 && e.which <= 57) {
+//        e.preventDefault();
+//    }
+//}
 
-function BlockLetters(e) {
-    if (e.which >= 65 && e.which <= 90 || e.which >= 97 && e.which <= 122)
-        e.preventDefault();
-}
+//function BlockLetters(e) {
+//    if (e.which >= 65 && e.which <= 90 || e.which >= 97 && e.which <= 122)
+//        e.preventDefault();
+//}
 
-function validatePhoneNumber(value, event) {
-    let phoneReg = /^([0-9]){3}-[0-9]{3}-[0-9]{4}$/;
-
-
-    if (!phoneReg.test(value)) {
-        $(".phone-error").text("phone number should be this format 555-555-5555  ");
-        $(".phone-error").addClass('error');
-    } else {
-        $(".phone-error").text('');
-        $(".phone-error").removeClass('error');
-    }
-}
+//function validatePhoneNumber(value, event) {
+//    let phoneReg = /^([0-9]){3}-[0-9]{3}-[0-9]{4}$/;
 
 
+//    if (!phoneReg.test(value)) {
+//        $(".phone-error").text("phone number should be this format 555-555-5555  ");
+//        $(".phone-error").addClass('error');
+//    } else {
+//        $(".phone-error").text('');
+//        $(".phone-error").removeClass('error');
+//    }
+//}
 
 
-function validateUsername(value, element) {
-    let UsernameReg = /^[A-Za-z]\w{5,29}$/;
-    if (!UsernameReg.test(value)) {
-        $(".username-error").text("The username must consist of a minimum of 5 characters and cannot begin with a number.");
-        $(".username-error").addClass('error');
-    } else {
-        $(".username-error").text('');
-        $(".username-error").removeClass('error');
-    }
-}
 
 
+//function validateUsername(value, element) {
+//    let UsernameReg = /^[A-Za-z]\w{5,29}$/;
+//    if (!UsernameReg.test(value)) {
+//        $(".username-error").text("The username must consist of a minimum of 5 characters and cannot begin with a number.");
+//        $(".username-error").addClass('error');
+//    } else {
+//        $(".username-error").text('');
+//        $(".username-error").removeClass('error');
+//    }
+//}
+
+
+
+
+//function validatePassword(value) {
+//    console.log("Validating Password.")
+//    let PasswordReg = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/;
+//    if (!PasswordReg.test(value)) {
+//        $(".password-error").text("Must contain at least one number and one uppercase and lowercase letter, and be at least 8 characters long");
+//        $(".password-error").addClass('error');
+//    } else {
+//        $(".password-error").text('');
+//        $(".password-error").removeClass('error');
+//    }
+//    validateConfirmPassword(document.getElementById("confirmPassword").value);
+//}
+
+//function validateConfirmPassword(value) {
+    
+//    let passwordValue = document.getElementById("password").value;
+//    if (value !== passwordValue || value === "") {
+//        $(".confirmpassword-error").text("Passwords must match");
+//        $(".confirmpassword-error").addClass('error');
+//    } else {
+//        $(".confirmpassword-error").text('');
+//        $(".confirmpassword-error").removeClass('error');
+//    }
+//}
 
 function validatePassword(value) {
     let PasswordReg = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/;
@@ -54,7 +80,7 @@ function validatePassword(value) {
         $(".password-error").text('');
         $(".password-error").removeClass('error');
     }
-    //Invoke the function, passing the value of the input element with id 'confirmPassword' as an argument. 
+   
     validateConfirmPassword(document.getElementById("confirmPassword").value);
 }
 
@@ -93,111 +119,112 @@ function validateConfirmPassword(value) {
     }
 }
 
-function validateEmail(value, element) {
-    let EmailReg = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-    if (!EmailReg.test(value)) {
-        $(".email-error").text("Please enter a valid email address ");
-        $(".email-error").addClass('error');
-    } else {
-        $(".email-error").text('');
-        $(".email-error").removeClass('error');
-    }
-}
+
+//function validateEmail(value, element) {
+//    let EmailReg = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+//    if (!EmailReg.test(value)) {
+//        $(".email-error").text("Please enter a valid email address ");
+//        $(".email-error").addClass('error');
+//    } else {
+//        $(".email-error").text('');
+//        $(".email-error").removeClass('error');
+//    }
+//}
 
 
-function validateFirstName(value, element) {
+//function validateFirstName(value, element) {
 
-    let FirstNameReg = /^[A-Za-z]{3,}$/;
+//    let FirstNameReg = /^[A-Za-z]{3,}$/;
 
-    if (!FirstNameReg.test(value)) {
-        $(".Fname-error").text("First Name must be at least 3 characters and contain only letters.");
-        $(".Fname-error").addClass('error');
-    } else {
-        $(".Fname-error").text('');
-        $(".Fname-error").removeClass('error');
-    }
-}
-
-
-
-function validateLastName(value, element) {
-
-    let LastNameReg = /^[A-Za-z]{3,}$/;
-
-    if (!LastNameReg.test(value)) {
-        $(".Lname-error").text("Last Name must be at least 3 characters and contain only letters.");
-        $(".Lname-error").addClass('error');
-    } else {
-        $(".Lname-error").text('');
-        $(".Lname-error").removeClass('error');
-    }
-}
-
-function validateDOB(value, element) {
-
-    let DOBReg = /^\d{4}-\d{2}-\d{2}$/;
+//    if (!FirstNameReg.test(value)) {
+//        $(".Fname-error").text("First Name must be at least 3 characters and contain only letters.");
+//        $(".Fname-error").addClass('error');
+//    } else {
+//        $(".Fname-error").text('');
+//        $(".Fname-error").removeClass('error');
+//    }
+//}
 
 
-    if (!DOBReg.test(value)) {
-        $(".DOB-error").text("Please enter a valid date of birth (MM-DD-YYY).");
-        $(".DOB-error").addClass('error');
-    } else {
 
-        let inputDate = new Date(value);
-        let currentDate = new Date();
-        if (inputDate > currentDate) {
-            $(".DOB-error").text("Date of birth cannot be in the future.");
-            $(".DOB-error").addClass('error');
-        } else {
+//function validateLastName(value, element) {
 
-            let minDOB = new Date(currentDate.getFullYear() - 18, currentDate.getMonth(), currentDate.getDate());
+//    let LastNameReg = /^[A-Za-z]{3,}$/;
 
-            if (inputDate > minDOB) {
-                $(".DOB-error").text("You must be at least 18 years old.");
-                $(".DOB-error").addClass('error');
-            } else {
+//    if (!LastNameReg.test(value)) {
+//        $(".Lname-error").text("Last Name must be at least 3 characters and contain only letters.");
+//        $(".Lname-error").addClass('error');
+//    } else {
+//        $(".Lname-error").text('');
+//        $(".Lname-error").removeClass('error');
+//    }
+//}
 
-                $(".DOB-error").text('');
-                $(".DOB-error").removeClass('error');
-            }
-        }
-    }
-}
+//function validateDOB(value, element) {
 
-function validateDepartment(value, element) {
-    let DepartmentReg = /^[A-Za-z\s]{3,50}$/;
-
-    if (!DepartmentReg.test(value)) {
-        $(".department-error").text("Department must be atleast 3 characters and should not start with a number.");
-        $(".department-error").addClass("error");
-    } else {
-        $(".department-error").text('');
-        $(".department-error").removeClass('error');
-    }
-}
-
-function validateEnrollmentD(value, element) {
-
-    let EnrollmentDReg = /^\d{4}-\d{2}-\d{2}$/;
+//    let DOBReg = /^\d{4}-\d{2}-\d{2}$/;
 
 
-    if (!EnrollmentDReg.test(value)) {
-        $(".EnrollmentD-error").text("Please enter a valid date of birth (MM-DD-YYY).");
-        $(".EnrollmentD-error").addClass('error');
-    } else {
+//    if (!DOBReg.test(value)) {
+//        $(".DOB-error").text("Please enter a valid date of birth (MM-DD-YYY).");
+//        $(".DOB-error").addClass('error');
+//    } else {
 
-        let inputDate = new Date(value);
-        let currentDate = new Date();
-        if (inputDate > currentDate) {
-            $(".EnrollmentD-error").text("Enrollement Date cannot be in the future.");
-            $(".EnrollmentD-error").addClass('error');
-        } else {
+//        let inputDate = new Date(value);
+//        let currentDate = new Date();
+//        if (inputDate > currentDate) {
+//            $(".DOB-error").text("Date of birth cannot be in the future.");
+//            $(".DOB-error").addClass('error');
+//        } else {
 
-            $(".EnrollmentD-error").text('');
-            $(".EnrollmentD-error").removeClass('error');
-        }
-    }
-}
+//            let minDOB = new Date(currentDate.getFullYear() - 18, currentDate.getMonth(), currentDate.getDate());
+
+//            if (inputDate > minDOB) {
+//                $(".DOB-error").text("You must be at least 18 years old.");
+//                $(".DOB-error").addClass('error');
+//            } else {
+
+//                $(".DOB-error").text('');
+//                $(".DOB-error").removeClass('error');
+//            }
+//        }
+//    }
+//}
+
+//function validateDepartment(value, element) {
+//    let DepartmentReg = /^[A-Za-z\s]{3,50}$/;
+
+//    if (!DepartmentReg.test(value)) {
+//        $(".department-error").text("Department must be atleast 3 characters and should not start with a number.");
+//        $(".department-error").addClass("error");
+//    } else {
+//        $(".department-error").text('');
+//        $(".department-error").removeClass('error');
+//    }
+//}
+
+//function validateEnrollmentD(value, element) {
+
+//    let EnrollmentDReg = /^\d{4}-\d{2}-\d{2}$/;
+
+
+//    if (!EnrollmentDReg.test(value)) {
+//        $(".EnrollmentD-error").text("Please enter a valid date of birth (MM-DD-YYY).");
+//        $(".EnrollmentD-error").addClass('error');
+//    } else {
+
+//        let inputDate = new Date(value);
+//        let currentDate = new Date();
+//        if (inputDate > currentDate) {
+//            $(".EnrollmentD-error").text("Enrollement Date cannot be in the future.");
+//            $(".EnrollmentD-error").addClass('error');
+//        } else {
+
+//            $(".EnrollmentD-error").text('');
+//            $(".EnrollmentD-error").removeClass('error');
+//        }
+//    }
+//}
 
 /*---------------------------------------------------------------------------*/
 
@@ -239,16 +266,14 @@ function previousSection() {
 }
 
 function RegisterBtnClicked() {
-    var formData = $('form').serialize();
+    var collectedData = $('form').serialize();
     $.ajax({
         type: 'POST',
-        url: '/Registration/Register',
-        data: formData,
+        url: '/Registration/Register', 
+        data: collectedData,
         success: function (response) {
-            if (response.success) {
-                alert('Registration successful: ' + response.message);
-            } else {
-                alert('Registration failed: ' + response.message);
+            if (String(response) === "-1") {
+                $("#FnErrMsg").show();
             }
         },
         error: function (error) {
