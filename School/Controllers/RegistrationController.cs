@@ -33,16 +33,23 @@ namespace School.Controllers
         public ActionResult Register( User user)
         {
             
-            if ( user.ValidateFirstName() )
+            if (!user.ValidateFirstName() )
             {
-                _context.Users.InsertOne(user);
-                return Content("Registration successful");
+                return Content("fn");
 
             }
-            
-            return Content("-1");
+            if (!user.ValidateLastName())
+            {
+                return Content("ln");
+            }if (!user.ValidateUsername())
+            {
+                return Content("us");
+            }
 
 
+
+            _context.Users.InsertOne(user);
+            return Content("Registration successful");
 
         }
 

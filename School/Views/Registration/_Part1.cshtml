@@ -4,7 +4,7 @@
     <label for="username">Username:</label>
     <div class="col-md-10">
         <input type="text" id="username" name="username" required onkeyup="validateUsername(this.value)"><br>
-   
+        <span id="usErrMsg" style="color:red; display:none;">The username must consist of a minimum of 5 characters and cannot begin with a number.</span>
      
         <span class="username-error"></span>
     </div>

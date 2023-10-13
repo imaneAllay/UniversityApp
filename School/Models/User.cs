@@ -3,6 +3,7 @@ using MongoDB.Bson.Serialization.Attributes;
 using System;
 using System.ComponentModel.DataAnnotations;
 using MongoDB.Driver;
+using System.Text.RegularExpressions;
 
 namespace School.Models
 {
@@ -40,6 +41,18 @@ namespace School.Models
         public bool ValidateFirstName()
         {
             return !string.IsNullOrEmpty(FirstName) && FirstName.Length >= 3;
+        }
+        public bool ValidateLastName()
+        {
+            return !string.IsNullOrEmpty(LastName) && LastName.Length >= 3;
+        }
+        public bool ValidateUsername()
+        {
+            string UsernameReg = "^[A-Za-z]\\w{5,29}$";
+            Regex re = new Regex(UsernameReg);
+             return !string.IsNullOrEmpty(Username) && re.IsMatch(Username);
+            
+                
         }
 
     }
