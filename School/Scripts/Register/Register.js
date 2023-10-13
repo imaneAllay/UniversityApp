@@ -273,18 +273,24 @@ function RegisterBtnClicked() {
         data: collectedData,
         success: function (response) {
             console.log(response);
-            if (String(response) === "fn")
-            {
+            if (String(response) === "fn") {
                 $("#FnErrMsg").show();
-            } 
+            } else {
+                $("#FnErrMsg").hide();
+            }
             if (String(response) === "ln")
             {
                 $("#LnErrMsg").show();
+            } else {
+                $("#LnErrMsg").hide();
             }
-            if (String(response) === "us")
-            {
+            if (String(response) === "us") {
                 $("#usErrMsg").show();
+            } else {
+                $("#usErrMsg").hide();
             }
+
+
 
         },
         error: function (error) {
