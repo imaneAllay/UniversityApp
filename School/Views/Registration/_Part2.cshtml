@@ -1,8 +1,14 @@
-﻿<div class="form-group">
-    <label for="firstName">First Name:</label>
+﻿@model School.Models.User
+
+
+<div class="form-group">
+    <label for="FirstName">First Name:</label>
     <div class="col-md-10">
-        <input type="text" id="firstName" name="FirstName" required onkeypress="BlockNumbers(event)" onkeyup="validateFirstName(this.value)"><br>
-        <span class="Fname-error"></span>
+        <input type="text" id="FirstName" name="FirstName" required  @*class="form-control"*@ @*onkeypress="BlockNumbers(event)"*@ @*onkeyup="validateFirstName(this.value)"*@><br>
+         <span id="FnErrMsg" style="color:red; display:none;">First Name must be at least 3 characters and contain only letters.</span>
+        @*<span class="Fname-error"></span>
+        @Html.ValidationMessageFor(model => model.FirstName)*@
+    <span class="text-danger"> @Html.ValidationMessageFor(model => model.FirstName)</span>
 
     </div>
 </div>
@@ -10,7 +16,7 @@
 <div class="form-group">
     <label for="lastName">Last Name:</label>
     <div class="col-md-10">
-        <input type="text" id="lastName" name="LastName" required onkeypress="BlockNumbers(event)" onkeyup="validateLastName(this.value)"><br>
+        <input type="text" id="lastName" name="LastName" required onkeypress="BlockNumbers(event)" @*onkeyup="validateLastName(this.value)"*@><br>
         <span class="Lname-error"></span>
     </div>
 </div>
@@ -30,7 +36,7 @@
 <div class="form-group">
     <label for="dateOfBirth">Date of Birth:</label>
     <div class="col-md-10">
-        <input type="date" id="dateOfBirth" name="DateOfBirth" required onchange="validateDOB(this.value)"><br>
+        <input type="date" id="dateOfBirth" name="DateOfBirth" required  @*onchange="validateDOB(this.value)"*@><br>
         <span class="DOB-error"></span>
     </div>
 </div>
@@ -38,7 +44,7 @@
 <div class="form-group">
     <label for="department">Department:</label>
     <div class="col-md-10">
-        <input type="text" id="department" name="Department" required onkeyup="validateDepartment(this.value)"><br>
+        <input type="text" id="department" name="Department" required @*onkeyup="validateDepartment(this.value)"*@><br>
         <span class="department-error"></span>
     </div>
 </div>
@@ -46,7 +52,7 @@
 <div class="form-group">
     <label for="enrollmentDate">Enrollment Date:</label>
     <div class="col-md-10">
-        <input type="date" id="enrollmentDate" name="EnrollmentDate" required onchange="validateEnrollmentD(this.value)"><br>
+        <input type="date" id="enrollmentDate" name="EnrollmentDate" required @*onchange="validateEnrollmentD(this.value)"*@><br>
         <span class="EnrollmentD-error"></span>
     </div>
 </div>

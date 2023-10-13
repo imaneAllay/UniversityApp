@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Helpers;
 using System.Web.Mvc;
 using BCrypt.Net;
+using System.Text.RegularExpressions;
 
 namespace School.Controllers
 {
@@ -29,85 +30,21 @@ namespace School.Controllers
         }
 
         [HttpPost]
-        public ActionResult Register(User user, Contacts contactInfo, Teacher profile, Student profile2)
+        public ActionResult Register( User user)
         {
-            if (ModelState.IsValid)
+            
+            if ( user.ValidateFirstName() )
             {
-                string salt = BCrypt.Net.BCrypt.GenerateSalt(12);
-                user.Salt = salt;
-                user.Password = BCrypt.Net.BCrypt.HashPassword(user.Password, salt);
-
                 _context.Users.InsertOne(user);
+                return Content("Registration successful");
 
-                var userId = user.Id;
-
-                contactInfo.UserId = userId;
-                contactInfo.Email = user.Email;
-                _context.Contacts.InsertOne(contactInfo);
-
-                if (user.Role == UserRole.Teacher)
-                {
-                    profile.UserId = userId;
-                    _context.Teachers.InsertOne(profile);
-                }
-                else if (user.Role == UserRole.Student)
-                {
-                    profile2.UserId = userId;
-                    _context.Students.InsertOne(profile2);
-                }
-
-                return Json(new { success = true, message = "Registration successful" });
             }
-            else
-            {
-                return Json(new { success = false, message = "Validation failed" });
-            }
+            
+            return Content("-1");
+
+
+
         }
-
-        //    [HttpPost]
-        //    public ActionResult Register(User user, Teacher profile, Student profile2, Contacts contactInfo)
-        //    {
-        //        if (ModelState.IsValid)
-        //        {
-
-        //            string salt = BCrypt.Net.BCrypt.GenerateSalt(12);
-        //            user.Salt = salt;
-        //            user.Password = BCrypt.Net.BCrypt.HashPassword(user.Password, salt);
-
-        //            _context.Users.InsertOne(user);
-
-
-        //            var userId = user.Id;
-
-        //            contactInfo.UserId = userId;
-        //            contactInfo.Email = user.Email;
-
-
-        //            _context.Contacts.InsertOne(contactInfo);
-
-        //            if (user.Role == UserRole.Teacher)
-        //            {
-        //                profile.UserId = userId;
-        //                _context.Teachers.InsertOne(profile);
-        //            }
-        //            else if (user.Role == UserRole.Student)
-        //            {
-        //                profile2.UserId = userId;
-        //                _context.Students.InsertOne(profile2);
-        //            }
-
-
-        //            return RedirectToAction("Login");
-
-        //        }
-
-
-        //        return View(user);
-
-        //    }
-        //}
-
-
 
 
 
