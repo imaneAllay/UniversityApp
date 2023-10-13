@@ -45,6 +45,7 @@
 
 
 
+
 //function validatePassword(value) {
 //    console.log("Validating Password.")
 //    let PasswordReg = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/;
@@ -69,6 +70,55 @@
 //        $(".confirmpassword-error").removeClass('error');
 //    }
 //}
+
+function validatePassword(value) {
+    let PasswordReg = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/;
+    if (!PasswordReg.test(value)) {
+        $(".password-error").text("Must contain at least one number and one uppercase and lowercase letter, and be at least 8 characters long");
+        $(".password-error").addClass('error');
+    } else {
+        $(".password-error").text('');
+        $(".password-error").removeClass('error');
+    }
+   
+    validateConfirmPassword(document.getElementById("confirmPassword").value);
+}
+
+
+document.addEventListener("DOMContentLoaded", function () {
+   
+    const togglePassword = document.getElementById('togglePassword');
+    const password = document.getElementById('password');
+
+    togglePassword.addEventListener('click', function (e) {
+        const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+        password.setAttribute('type', type);
+        this.classList.toggle('fa-eye-slash');
+    });
+
+    const toggleConfirmPassword = document.getElementById('toggleConfirmPassword');
+    const confirmPassword = document.getElementById('confirmPassword');
+
+    toggleConfirmPassword.addEventListener('click', function (e) {
+        const type = confirmPassword.getAttribute('type') === 'password' ? 'text' : 'password';
+        confirmPassword.setAttribute('type', type);
+        this.classList.toggle('fa-eye-slash');
+    });
+});
+
+
+function validateConfirmPassword(value) {
+    
+    let passwordValue = document.getElementById("password").value;
+    if (value !== passwordValue) {
+        $(".confirmpassword-error").text("Passwords must match");
+        $(".confirmpassword-error").addClass('error');
+    } else {
+        $(".confirmpassword-error").text('');
+        $(".confirmpassword-error").removeClass('error');
+    }
+}
+
 
 //function validateEmail(value, element) {
 //    let EmailReg = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;

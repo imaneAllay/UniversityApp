@@ -4,11 +4,9 @@
 <div class="form-group">
     <label for="FirstName">First Name:</label>
     <div class="col-md-10">
-        <input type="text" id="FirstName" name="FirstName" required  @*class="form-control"*@ @*onkeypress="BlockNumbers(event)"*@ @*onkeyup="validateFirstName(this.value)"*@><br>
-         <span id="FnErrMsg" style="color:red; display:none;">First Name must be at least 3 characters and contain only letters.</span>
-        @*<span class="Fname-error"></span>
-        @Html.ValidationMessageFor(model => model.FirstName)*@
-    <span class="text-danger"> @Html.ValidationMessageFor(model => model.FirstName)</span>
+        <input type="text" id="FirstName" name="FirstName" required @*class="form-control"*@ @*onkeypress="BlockNumbers(event)"*@ @*onkeyup="validateFirstName(this.value)"*@><br>
+        <span id="FnErrMsg" style="color:red; display:none;">First Name must be at least 3 characters and contain only letters.</span>
+        @*<span class="Fname-error"></span>*@
 
     </div>
 </div>

@@ -13,7 +13,9 @@
 <div class="form-group">
     <label for="password">Password:</label>
     <div class="col-md-10">
-        <input type="password" id="password" name="Password" required onkeyup="validatePassword(this.value)"><br>
+        <input type="password" id="password" name="Password" required onkeyup="validatePassword(this.value)">
+        <i class="fa fa-eye" id="togglePassword" style="margin-left:-30px; cursor:pointer;"></i>
+        <br>
         <span class="password-error"></span>
     </div>
 </div>
@@ -21,7 +23,9 @@
 <div class="form-group">
     <label for="confirmPassword">Confirm Password</label>
     <div class="col-md-10">
-        <input type="password" id="confirmPassword" name="confirmPassword" required onkeyup="validateConfirmPassword(this.value)"><br>
+        <input type="password" id="confirmPassword" name="confirmPassword" required onkeyup="validateConfirmPassword(this.value)">
+        <i class="fa fa-eye" id="toggleConfirmPassword" style="margin-left:-30px; cursor:pointer;"></i>
+        <br>
         <span class="confirmpassword-error"></span>
     </div>
 
