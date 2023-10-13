@@ -272,9 +272,20 @@ function RegisterBtnClicked() {
         url: '/Registration/Register', 
         data: collectedData,
         success: function (response) {
-            if (String(response) === "-1") {
+            console.log(response);
+            if (String(response) === "fn")
+            {
                 $("#FnErrMsg").show();
+            } 
+            if (String(response) === "ln")
+            {
+                $("#LnErrMsg").show();
             }
+            if (String(response) === "us")
+            {
+                $("#usErrMsg").show();
+            }
+
         },
         error: function (error) {
             console.error('Form submission error:', error);
