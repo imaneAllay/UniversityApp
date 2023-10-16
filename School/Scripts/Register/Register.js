@@ -265,6 +265,10 @@ function previousSection() {
     }
 }
 
+function Close() {
+    window.location.href = '/Home/Login';
+}
+
 function RegisterBtnClicked() {
     ClearErrorMessages();
     var collectedData = $('form').serialize();
@@ -314,6 +318,7 @@ function RegisterBtnClicked() {
                     $("#enrollmentDateErrMsg").show();
                     break;
                 case "1": // popup
+                    showSuccessModal();
                     break;
 
             }
@@ -337,7 +342,10 @@ function RegisterBtnClicked() {
         $("#enrollmentDateErrMsg").hide();
         $("#DOBAErrMsg").hide();
     }
-
+    function showSuccessModal() {
+        $('#successModal').modal('show'); // Show the success modal
+    }
+   
 }
 
 
