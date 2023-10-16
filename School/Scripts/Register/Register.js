@@ -276,33 +276,40 @@ function RegisterBtnClicked() {
             console.log(response);
 
             switch (String(response)) {
-                case "fn":
-                    $("#FnErrMsg").show();
-                    break;
-                case "ln":
-                    $("#LnErrMsg").show();
-                    break;
+
                 case "us":
                     $("#usErrMsg").show();
+                    break;
+                case "password":
+                    $("#passwordErrMsg").show();
+                    break;
+                case "confirmpassword":
+                    $("#confirmpasswordErrMsg").show();
                     break;
                 case "email":
                     $("#emailErrMsg").show();
                     break
                 case "phone":
                     $("#phoneErrMsg").show();
-                    break
-                //case "DOB":
-                //    $("#DOBErrMsg").show();
-                //    break
+                    break;
+                case "fn":
+                    $("#FnErrMsg").show();
+                    break;
+                case "ln":
+                    $("#LnErrMsg").show();
+                    break;
+                case "DOB":
+                    $("#DOBErrMsg").show();
+                    break;
+                case "DOBF":
+                    $("#DOBFErrMsg").show();
+                    break;
+                case "DOBA":
+                    $("#DOBAErrMsg").show();
+                    break;
                 case "department":
                     $("#departmentErrMsg").show();
-                    break
-                case "password":
-                    $("#passwordErrMsg").show();
-                    break
-                case "confirmpassword":
-                    $("#confirmpasswordErrMsg").show();
-                    break
+                    break;
                 case "en":
                     $('#enrollmentDateErrMsg').show();
                     break
@@ -331,10 +338,12 @@ function RegisterBtnClicked() {
         $("#emailErrMsg").hide();
         $("#phoneErrMsg").hide();
         $("#DOBErrMsg").hide();
+        $("#DOBFErrMsg").hide();
         $("#departmentErrMsg").hide();
         $("#passwordErrMsg").hide();
         $("#confirmpasswordErrMsg").hide();
         $("#enrollmentDateErrMsg").hide();
+        $("#DOBAErrMsg").hide();
     }
 
 }
