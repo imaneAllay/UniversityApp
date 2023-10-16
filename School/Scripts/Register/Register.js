@@ -347,7 +347,7 @@ function RegisterBtnClicked() {
         $("#DOBAErrMsg").hide();
     }
     function showSuccessModal() {
-        $('#successModal').modal('show'); // Show the success modal
+        $('#successModal').modal('show'); 
     }
    
 }
