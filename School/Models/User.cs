@@ -55,6 +55,59 @@ namespace School.Models
                 
         }
 
+        public bool ValidateEmail()
+        {
+            string EmailReg = @"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$";
+            Regex re = new Regex(EmailReg);
+            return !string.IsNullOrEmpty(Email) && re.IsMatch(Email);
+        }
+
+        public bool ValidatePassword()
+        {
+            string PasswordReg = @"^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$";
+            Regex re = new Regex(PasswordReg);
+            return !string.IsNullOrEmpty(Password) && re.IsMatch(Password);
+        }
+
+        public bool ValidateConfirmPassword()
+        {
+
+            //string confirmPasswordReg = @"^(?=.*\d)(?=.* [a - z])(?=.* [A - Z]).{ 8,}$";
+            //Regex re = new Regex(confirmPasswordReg);
+            //return !string.IsNullOrEmpty(Password) && re.IsMatch(Password);
+
+            return !string.IsNullOrEmpty(confirmPassword) && confirmPassword.Equals(Password);
+        }
+
+        public bool ValidatePhoneNumber()
+        {
+            string PhoneReg = @"^([0-9]){3}-[0-9]{3}-[0-9]{4}$";
+            Regex re = new Regex(PhoneReg);
+            return !string.IsNullOrEmpty(PhoneNumber) && re.IsMatch(PhoneNumber);
+        }
+
+        public bool ValidateDOB()
+        {
+            string DOBReg = @"^\d{2}-\d{2}-\d{4}$";
+            Regex re = new Regex(DOBReg);
+            string dateOfBirth = DateOfBirth.ToString("MM-dd-yyyy");
+            return re.IsMatch(dateOfBirth);
+        }
+
+        public bool ValidateDeparment()
+        {
+            string DepartmentReg = @"^[A-Za-z\s]{3,50}$";
+            Regex re = new Regex(DepartmentReg);
+            return !string.IsNullOrEmpty(Department) && re.IsMatch(Department);
+        }
+
+        public bool ValidateEnrollmentDate()
+        {
+            string EnrollmentDateReg = @"^\d{2}-\d{2}-\d{4}$";
+            Regex re = new Regex(EnrollmentDateReg);
+            string enrollmentDate = EnrollmentDate.ToString("MM-dd-yyyy");
+            return re.IsMatch(enrollmentDate);
+        }
     }
     public enum UserRole
     {
