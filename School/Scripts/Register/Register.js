@@ -292,7 +292,7 @@ function RegisterBtnClicked() {
                     break;
                 case "email":
                     $("#emailErrMsg").show();
-                    break;
+                    break
                 case "phone":
                     $("#phoneErrMsg").show();
                     break;
@@ -315,13 +315,17 @@ function RegisterBtnClicked() {
                     $("#departmentErrMsg").show();
                     break;
                 case "en":
+
                     $("#enrollmentDateErrMsg").show();
                     break;
                 case "1": // popup
                     showSuccessModal();
                     break;
 
+
             }
+
+
 
         },
         error: function (error) {

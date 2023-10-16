@@ -84,14 +84,14 @@ namespace School.Models
   
        
 
-        //public bool ValidateDOB()
-        //{
-        //    string DOBReg = @"^\d{2}-\d{2}-\d{4}$";
-        //    Regex re = new Regex(DOBReg);
-            
-        //    return !string.IsNullOrEmpty(PhoneNumber) && re.IsMatch(DateOfBirth);
+        ////public bool ValidateDOB()
+        ////{
+        ////    string DOBReg = @"^\d{2}-\d{2}-\d{4}$";
+        ////    Regex re = new Regex(DOBReg);
 
-        //}
+        ////    return !string.IsNullOrEmpty(PhoneNumber) && re.IsMatch(DateOfBirth);
+
+        ////}
 
         public bool ValidateDeparment()
         {

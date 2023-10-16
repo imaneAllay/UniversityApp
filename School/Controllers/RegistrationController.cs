@@ -106,7 +106,7 @@ namespace School.Controllers
                 return Content("1");
             }
 
-            
+
 
         }
 
