@@ -287,29 +287,37 @@ function RegisterBtnClicked() {
                     break;
                 case "email":
                     $("#emailErrMsg").show();
-                    break;
+                    break
                 case "phone":
                     $("#phoneErrMsg").show();
-                    break;
-                case "DOB":
-                    $("#DOBErrMsg").show();
-                    break;
+                    break
+                //case "DOB":
+                //    $("#DOBErrMsg").show();
+                //    break
                 case "department":
                     $("#departmentErrMsg").show();
-                    break;
+                    break
                 case "password":
                     $("#passwordErrMsg").show();
-                    break;
+                    break
                 case "confirmpassword":
                     $("#confirmpasswordErrMsg").show();
-                    break;
+                    break
                 case "en":
-                    $("#enrollmentDateErrMsg").show();
-                    break;
-                case "1": // popup
+                    $('#enrollmentDateErrMsg').show();
+                    break
+                case "1":
+                    $('#exampleModalCenter').text('Success!');
+                    $(".modal-body").text("Registration successful");
+                    $('#exampleModalCenter').modal('show');
+
+
                     break;
 
+
             }
+
+
 
         },
         error: function (error) {

@@ -62,26 +62,26 @@ namespace School.Controllers
             {
                 return Content("phone");
             }
-            else if (string.IsNullOrWhiteSpace(user.DateOfBirth))
-                {
-                return Content("DOB");
-            }
-            
+            //else if (!user.ValidateDOB())
+            //{
+            //    return Content("DOB");
+            //}
             else if (!user.ValidateDeparment())
             {
                 return Content("department");
             }
-            else if (string.IsNullOrWhiteSpace(user.EnrollmentDate))
+            //else if (!user.ValidateEnrollmentDate())
+            //{
+            //    return Content("en");
+            //}
+            else
             {
-                return Content("en");
-            }
-            else {
-                
-                _context.Users.InsertOne(user);
-                return Content("1");
+            
+            _context.Users.InsertOne(user);
+            return Content("1");
             }
 
-            
+
 
         }
 
