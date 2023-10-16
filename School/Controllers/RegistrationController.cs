@@ -38,46 +38,50 @@ namespace School.Controllers
                 return Content("fn");
 
             }
-            if (!user.ValidateLastName())
+            else if (!user.ValidateLastName())
             {
                 return Content("ln");
             }
-            if (!user.ValidateUsername())
+            else if (!user.ValidateUsername())
             {
                 return Content("us");
             }
-            if (!user.ValidateEmail())
+            else if (!user.ValidateEmail())
             {
                 return Content("email");
             }
-            if (!user.ValidatePassword())
+            else if (!user.ValidatePassword())
             {
                 return Content("password");
             }
-            if (!user.ValidateConfirmPassword())
+            else if (!user.ValidateConfirmPassword())
             {
                 return Content("confirmpassword");
             }
-            if (!user.ValidatePhoneNumber())
+            else if (!user.ValidatePhoneNumber())
             {
                 return Content("phone");
             }
-            if (!user.ValidateDOB())
-            {
+            else if (string.IsNullOrWhiteSpace(user.DateOfBirth))
+                {
                 return Content("DOB");
             }
-            if (!user.ValidateDeparment())
+            
+            else if (!user.ValidateDeparment())
             {
                 return Content("department");
             }
-            if (!user.ValidateEnrollmentDate())
+            else if (string.IsNullOrWhiteSpace(user.EnrollmentDate))
             {
                 return Content("en");
             }
+            else {
+                
+                _context.Users.InsertOne(user);
+                return Content("1");
+            }
 
-
-            _context.Users.InsertOne(user);
-            return Content("Registration successful");
+            
 
         }
 
