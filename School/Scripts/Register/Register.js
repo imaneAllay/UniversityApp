@@ -266,6 +266,7 @@ function previousSection() {
 }
 
 function RegisterBtnClicked() {
+    ClearErrorMessages();
     var collectedData = $('form').serialize();
     $.ajax({
         type: 'POST',
@@ -273,65 +274,60 @@ function RegisterBtnClicked() {
         data: collectedData,
         success: function (response) {
             console.log(response);
-            if (String(response) === "fn") {
-                $("#FnErrMsg").show();
-            } else {
-                $("#FnErrMsg").hide();
-            }
-            if (String(response) === "ln")
-            {
-                $("#LnErrMsg").show();
-            } else {
-                $("#LnErrMsg").hide();
-            }
-            if (String(response) === "us") {
-                $("#usErrMsg").show();
-            } else {
-                $("#usErrMsg").hide();
-            }
-            if (String(response) === "email") {
-                $("#emailErrMsg").show();
-            } else {
-                $("#emailErrMsg").hide();
-            }
-            if (String(response) === "phone") {
-                $("#phoneErrMsg").show();
-            } else {
-                $("#phoneErrMsg").hide();
-            }
-            if (String(response) === "DOB") {
-                $("#DOBErrMsg").show();
-            } else {
-                $("#DOBErrMsg").hide();
-            }
-            if (String(response) === "department") {
-                $("#departmentErrMsg").show();
-            } else {
-                $("#departmentErrMsg").hide();
-            }
-            if (String(response) === "password") {
-                $("#passwordErrMsg").show();
-            } else {
-                $("#passwordErrMsg").hide();
-            }
-            if (String(response) === "confirmpassword") {
-                $("#confirmpasswordErrMsg").show();
-            } else {
-                $("#confirmpasswordErrMsg").hide();
-            }
-            if (String(response) === "en") {
-                $('#enrollmentDateErrMsg').show();
-            } else {
-                $("#enrollmentDateErrMsg").hide();
-            }
 
+            switch (String(response)) {
+                case "fn":
+                    $("#FnErrMsg").show();
+                    break;
+                case "ln":
+                    $("#LnErrMsg").show();
+                    break;
+                case "us":
+                    $("#usErrMsg").show();
+                    break;
+                case "email":
+                    $("#emailErrMsg").show();
+                    break;
+                case "phone":
+                    $("#phoneErrMsg").show();
+                    break;
+                case "DOB":
+                    $("#DOBErrMsg").show();
+                    break;
+                case "department":
+                    $("#departmentErrMsg").show();
+                    break;
+                case "password":
+                    $("#passwordErrMsg").show();
+                    break;
+                case "confirmpassword":
+                    $("#confirmpasswordErrMsg").show();
+                    break;
+                case "en":
+                    $("#enrollmentDateErrMsg").show();
+                    break;
+                case "1": // popup
+                    break;
 
+            }
 
         },
         error: function (error) {
             console.error('Form submission error:', error);
         }
     });
+    function ClearErrorMessages() {
+        $("#FnErrMsg").hide();
+        $("#LnErrMsg").hide();
+        $("#usErrMsg").hide();
+        $("#emailErrMsg").hide();
+        $("#phoneErrMsg").hide();
+        $("#DOBErrMsg").hide();
+        $("#departmentErrMsg").hide();
+        $("#passwordErrMsg").hide();
+        $("#confirmpasswordErrMsg").hide();
+        $("#enrollmentDateErrMsg").hide();
+    }
 
 }
 

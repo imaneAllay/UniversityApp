@@ -30,13 +30,13 @@ namespace School.Models
 
         public UserRole Role { get; set; }
 
-        public DateTime DateOfBirth { get; set; }
+        public string DateOfBirth { get; set; }
 
 
         public string Department { get; set; }
 
 
-        public DateTime EnrollmentDate { get; set; }
+        public string EnrollmentDate { get; set; }
 
         public bool ValidateFirstName()
         {
@@ -50,9 +50,9 @@ namespace School.Models
         {
             string UsernameReg = "^[A-Za-z]\\w{5,29}$";
             Regex re = new Regex(UsernameReg);
-             return !string.IsNullOrEmpty(Username) && re.IsMatch(Username);
-            
-                
+            return !string.IsNullOrEmpty(Username) && re.IsMatch(Username);
+
+
         }
 
         public bool ValidateEmail()
@@ -86,13 +86,14 @@ namespace School.Models
             return !string.IsNullOrEmpty(PhoneNumber) && re.IsMatch(PhoneNumber);
         }
 
-        public bool ValidateDOB()
-        {
-            string DOBReg = @"^\d{2}-\d{2}-\d{4}$";
-            Regex re = new Regex(DOBReg);
-            string dateOfBirth = DateOfBirth.ToString("MM-dd-yyyy");
-            return re.IsMatch(dateOfBirth);
-        }
+        //public bool ValidateDOB()
+        //{
+        //    string DOBReg = @"^\d{2}-\d{2}-\d{4}$";
+        //    Regex re = new Regex(DOBReg);
+            
+        //    return !string.IsNullOrEmpty(PhoneNumber) && re.IsMatch(DateOfBirth);
+
+        //}
 
         public bool ValidateDeparment()
         {
@@ -101,13 +102,7 @@ namespace School.Models
             return !string.IsNullOrEmpty(Department) && re.IsMatch(Department);
         }
 
-        public bool ValidateEnrollmentDate()
-        {
-            string EnrollmentDateReg = @"^\d{2}-\d{2}-\d{4}$";
-            Regex re = new Regex(EnrollmentDateReg);
-            string enrollmentDate = EnrollmentDate.ToString("MM-dd-yyyy");
-            return re.IsMatch(enrollmentDate);
-        }
+
     }
     public enum UserRole
     {
