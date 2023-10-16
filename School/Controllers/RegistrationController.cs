@@ -41,11 +41,39 @@ namespace School.Controllers
             if (!user.ValidateLastName())
             {
                 return Content("ln");
-            }if (!user.ValidateUsername())
+            }
+            if (!user.ValidateUsername())
             {
                 return Content("us");
             }
-
+            if (!user.ValidateEmail())
+            {
+                return Content("email");
+            }
+            if (!user.ValidatePassword())
+            {
+                return Content("password");
+            }
+            if (!user.ValidateConfirmPassword())
+            {
+                return Content("confirmpassword");
+            }
+            if (!user.ValidatePhoneNumber())
+            {
+                return Content("phone");
+            }
+            if (!user.ValidateDOB())
+            {
+                return Content("DOB");
+            }
+            if (!user.ValidateDeparment())
+            {
+                return Content("department");
+            }
+            if (!user.ValidateEnrollmentDate())
+            {
+                return Content("en");
+            }
 
 
             _context.Users.InsertOne(user);

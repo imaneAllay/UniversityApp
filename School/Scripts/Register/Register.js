@@ -71,18 +71,18 @@
 //    }
 //}
 
-function validatePassword(value) {
-    let PasswordReg = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/;
-    if (!PasswordReg.test(value)) {
-        $(".password-error").text("Must contain at least one number and one uppercase and lowercase letter, and be at least 8 characters long");
-        $(".password-error").addClass('error');
-    } else {
-        $(".password-error").text('');
-        $(".password-error").removeClass('error');
-    }
+//function validatePassword(value) {
+//    let PasswordReg = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/;
+//    if (!PasswordReg.test(value)) {
+//        $(".password-error").text("Must contain at least one number and one uppercase and lowercase letter, and be at least 8 characters long");
+//        $(".password-error").addClass('error');
+//    } else {
+//        $(".password-error").text('');
+//        $(".password-error").removeClass('error');
+//    }
    
-    validateConfirmPassword(document.getElementById("confirmPassword").value);
-}
+//    validateConfirmPassword(document.getElementById("confirmPassword").value);
+//}
 
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -107,17 +107,17 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 
-function validateConfirmPassword(value) {
+//function validateConfirmPassword(value) {
     
-    let passwordValue = document.getElementById("password").value;
-    if (value !== passwordValue) {
-        $(".confirmpassword-error").text("Passwords must match");
-        $(".confirmpassword-error").addClass('error');
-    } else {
-        $(".confirmpassword-error").text('');
-        $(".confirmpassword-error").removeClass('error');
-    }
-}
+//    let passwordValue = document.getElementById("password").value;
+//    if (value !== passwordValue) {
+//        $(".confirmpassword-error").text("Passwords must match");
+//        $(".confirmpassword-error").addClass('error');
+//    } else {
+//        $(".confirmpassword-error").text('');
+//        $(".confirmpassword-error").removeClass('error');
+//    }
+//}
 
 
 //function validateEmail(value, element) {
@@ -288,6 +288,41 @@ function RegisterBtnClicked() {
                 $("#usErrMsg").show();
             } else {
                 $("#usErrMsg").hide();
+            }
+            if (String(response) === "email") {
+                $("#emailErrMsg").show();
+            } else {
+                $("#emailErrMsg").hide();
+            }
+            if (String(response) === "phone") {
+                $("#phoneErrMsg").show();
+            } else {
+                $("#phoneErrMsg").hide();
+            }
+            if (String(response) === "DOB") {
+                $("#DOBErrMsg").show();
+            } else {
+                $("#DOBErrMsg").hide();
+            }
+            if (String(response) === "department") {
+                $("#departmentErrMsg").show();
+            } else {
+                $("#departmentErrMsg").hide();
+            }
+            if (String(response) === "password") {
+                $("#passwordErrMsg").show();
+            } else {
+                $("#passwordErrMsg").hide();
+            }
+            if (String(response) === "confirmpassword") {
+                $("#confirmpasswordErrMsg").show();
+            } else {
+                $("#confirmpasswordErrMsg").hide();
+            }
+            if (String(response) === "en") {
+                $('#enrollmentDateErrMsg').show();
+            } else {
+                $("#enrollmentDateErrMsg").hide();
             }
 
 

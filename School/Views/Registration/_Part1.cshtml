@@ -4,7 +4,7 @@
     <label for="username">Username:</label>
     <div class="col-md-10">
         <input type="text" id="username" name="username" required onkeyup="validateUsername(this.value)"><br>
-        <span id="usErrMsg" style="color:red; display:none;">The username must consist of a minimum of 5 characters and cannot begin with a number.</span>
+        <span id="usErrMsg" style="color:red; display:none;">The username must consist of a minimum of 6 characters and cannot begin with a number.</span>
      
         <span class="username-error"></span>
     </div>
@@ -16,6 +16,7 @@
         <input type="password" id="password" name="Password" required onkeyup="validatePassword(this.value)">
         <i class="fa fa-eye" id="togglePassword" style="margin-left:-30px; cursor:pointer;"></i>
         <br>
+        <span id="passwordErrMsg" style="color:red; display:none;">Must contain at least one number and one uppercase and lowercase letter, and be at least 8 characters long</span>
         <span class="password-error"></span>
     </div>
 </div>
@@ -26,6 +27,7 @@
         <input type="password" id="confirmPassword" name="confirmPassword" required onkeyup="validateConfirmPassword(this.value)">
         <i class="fa fa-eye" id="toggleConfirmPassword" style="margin-left:-30px; cursor:pointer;"></i>
         <br>
+        <span id="confirmpasswordErrMsg" style="color:red; display:none;">Passwords must match</span>
         <span class="confirmpassword-error"></span>
     </div>
 
@@ -35,6 +37,7 @@
     <label for="email">Email:</label>
     <div class="col-md-10">
         <input type="email" id="email" name="Email" required onkeyup="validateEmail(this.value)"><br>
+        <span id="emailErrMsg" style="color:red; display:none;">Please enter a valid email address</span>
         <span class="email-error"></span>
     </div>
 </div>
@@ -43,6 +46,7 @@
     <label for="phoneNumber">Phone Number:</label>
     <div class="col-md-10">
         <input type="tel" id="phoneNumber" name="phoneNumber" onkeypress="BlockLetters(event)" onkeyup="validatePhoneNumber(this.value)"><br>
+        <span id="phoneErrMsg" style="color:red; display:none;">phone number should be this format 555-555-5555 </span>
         <span class="phone-error"></span>
     </div>
 </div>

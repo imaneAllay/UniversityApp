@@ -36,6 +36,7 @@
     <label for="dateOfBirth">Date of Birth:</label>
     <div class="col-md-10">
         <input type="date" id="dateOfBirth" name="DateOfBirth" required  @*onchange="validateDOB(this.value)"*@><br>
+        <span id="DOBErrMsg" style="color:red; display:none;">"Please enter a valid date of birth (MM-DD-YYY)."</span>
         <span class="DOB-error"></span>
     </div>
 </div>
@@ -44,6 +45,7 @@
     <label for="department">Department:</label>
     <div class="col-md-10">
         <input type="text" id="department" name="Department" required @*onkeyup="validateDepartment(this.value)"*@><br>
+        <span id="departmentErrMsg" style="color:red; display:none;">Department must be atleast 3 characters and should not start with a number.</span>
         <span class="department-error"></span>
     </div>
 </div>
@@ -52,6 +54,7 @@
     <label for="enrollmentDate">Enrollment Date:</label>
     <div class="col-md-10">
         <input type="date" id="enrollmentDate" name="EnrollmentDate" required @*onchange="validateEnrollmentD(this.value)"*@><br>
+        <span id="enrollmentDateErrMsg" style="color:red; display:none;">Please enter a valid enrollment date (MM-DD-YYYY).</span>
         <span class="EnrollmentD-error"></span>
     </div>
 </div>
