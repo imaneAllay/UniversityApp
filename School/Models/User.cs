@@ -30,36 +30,19 @@ namespace School.Models
 
         public UserRole Role { get; set; }
 
-        public string DateOfBirth { get; set; }
+        public DateTime DateOfBirth { get; set; }
 
 
         public string Department { get; set; }
 
 
-        public string EnrollmentDate { get; set; }
+        public DateTime EnrollmentDate { get; set; }
 
-        public bool ValidateFirstName()
-        {
-            return !string.IsNullOrEmpty(FirstName) && FirstName.Length >= 3;
-        }
-        public bool ValidateLastName()
-        {
-            return !string.IsNullOrEmpty(LastName) && LastName.Length >= 3;
-        }
         public bool ValidateUsername()
         {
             string UsernameReg = "^[A-Za-z]\\w{5,29}$";
             Regex re = new Regex(UsernameReg);
             return !string.IsNullOrEmpty(Username) && re.IsMatch(Username);
-
-
-        }
-
-        public bool ValidateEmail()
-        {
-            string EmailReg = @"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$";
-            Regex re = new Regex(EmailReg);
-            return !string.IsNullOrEmpty(Email) && re.IsMatch(Email);
         }
 
         public bool ValidatePassword()
@@ -78,13 +61,28 @@ namespace School.Models
 
             return !string.IsNullOrEmpty(confirmPassword) && confirmPassword.Equals(Password);
         }
-
+        public bool ValidateEmail()
+        {
+            string EmailReg = @"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$";
+            Regex re = new Regex(EmailReg);
+            return !string.IsNullOrEmpty(Email) && re.IsMatch(Email);
+        }
         public bool ValidatePhoneNumber()
         {
             string PhoneReg = @"^([0-9]){3}-[0-9]{3}-[0-9]{4}$";
             Regex re = new Regex(PhoneReg);
             return !string.IsNullOrEmpty(PhoneNumber) && re.IsMatch(PhoneNumber);
         }
+        public bool ValidateFirstName()
+        {
+            return !string.IsNullOrEmpty(FirstName) && FirstName.Length >= 3;
+        }
+        public bool ValidateLastName()
+        {
+            return !string.IsNullOrEmpty(LastName) && LastName.Length >= 3;
+        }
+  
+       
 
         //public bool ValidateDOB()
         //{
