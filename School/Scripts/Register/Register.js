@@ -302,6 +302,9 @@ function RegisterBtnClicked() {
                 case "ln":
                     $("#LnErrMsg").show();
                     break;
+                case "r":
+                    $("#RErrMsg").show();
+                    break;
                 case "DOB":
                     $("#DOBErrMsg").show();
                     break;
@@ -315,18 +318,12 @@ function RegisterBtnClicked() {
                     $("#departmentErrMsg").show();
                     break;
                 case "en":
-
                     $("#enrollmentDateErrMsg").show();
                     break;
                 case "1": // popup
                     showSuccessModal();
                     break;
-
-
             }
-
-
-
         },
         error: function (error) {
             console.error('Form submission error:', error);
@@ -340,6 +337,7 @@ function RegisterBtnClicked() {
         $("#phoneErrMsg").hide();
         $("#DOBErrMsg").hide();
         $("#DOBFErrMsg").hide();
+        $("#RErrMsg").hide();
         $("#departmentErrMsg").hide();
         $("#passwordErrMsg").hide();
         $("#confirmpasswordErrMsg").hide();
