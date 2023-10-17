@@ -12,7 +12,7 @@ namespace School.Controllers
     public class HomeController : Controller
     {
         private readonly MongoDbContext dbContext = new MongoDbContext();
-        private IEnumerable<Student> studentsToInsert;
+        
 
         public ActionResult Login()
         {
@@ -25,12 +25,6 @@ namespace School.Controllers
         {
             Debug.WriteLine("Login action reached.");
 
-            if (!ModelState.IsValid)
-            {
-                
-                var errors = ModelState.Values.SelectMany(v => v.Errors).Select(e => e.ErrorMessage);
-                
-            }
 
             var filter = Builders<User>.Filter.Eq(u => u.Username, user.Username) &
                             Builders<User>.Filter.Eq(u => u.Password, user.Password);
@@ -50,11 +44,8 @@ namespace School.Controllers
                     return RedirectToAction("StudentD", "Student");
                 }
             }
-            else
-            {
-                ModelState.AddModelError("", "Invalid username or password");
-            }
 
+            Content("-1");
             return View("Login", user);
         }
 

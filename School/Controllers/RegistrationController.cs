@@ -56,41 +56,37 @@ namespace School.Controllers
             //{
             //    return Content("fn");
 
-            //}
-            //else if (!user.ValidateLastName())
+                //}
+           if (!user.ValidateLastName())
+            {
+                return Content("ln");
+            }
+         
+            else if (user.ValidateRole())
+            {
+                return Content("r");
+            }
+
+            //else if (user.DateOfBirth == DateTime.MinValue)
             //{
-            //    return Content("ln");
+            //    return Content("DOB");
             //}
-          
-            if (user.DateOfBirth == DateTime.MinValue)
-            {
-                return Content("DOB");
-            }
-            else if (user.DateOfBirth > DateTime.Now)
-            {
-                return Content("DOBF");
-            }
-            var currentYear = DateTime.Now.Year;
-            var currentMonth = DateTime.Now.Month;
-            var currentDay = DateTime.Now.Day;
-            var minAge = new DateTime (currentYear - 18 , currentMonth , currentDay);
+            //else if (user.DateOfBirth > DateTime.Now)
+            //{
+            //    return Content("DOBF");
+            //}
+            //var currentYear = DateTime.Now.Year;
+            //var Age = currentYear - DateTime.Now.Year;
 
-             if (user.DateOfBirth > minAge)
-            {
-                return Content("DOBA");
-            }
+            // if (Age < 18)
+            //{
+            //    return Content("DOBA");
+            //}
 
-
-
-
-
-
-
-
-            else if (user.DateOfBirth > DateTime.Now)
-            {
-                return Content("DOBF");
-            }
+            //else if (user.DateOfBirth > DateTime.Now)
+            //{
+            //    return Content("DOBF");
+            //}
 
             //else if (!user.ValidateDeparment())
             //{

@@ -4,7 +4,7 @@
 <div class="form-group">
     <label for="FirstName">First Name:</label>
     <div class="col-md-10">
-        <input type="text" id="FirstName" name="FirstName" required class="form-control" @*onkeypress="BlockNumbers(event)"*@ @*onkeyup="validateFirstName(this.value)"*@><br>
+        <input type="text" id="FirstName" name="FirstName" required class="form-control" @*onkeypress="BlockNumbers(event)"*@ @*onkeyup="validateFirstName(this.value)"*@>
         <span id="FnErrMsg" style="color:red; display:none;">First Name must be at least 3 characters and contain only letters.</span>
         @*<span class="Fname-error"></span>*@
 
@@ -14,7 +14,7 @@
 <div class="form-group">
     <label for="lastName">Last Name:</label>
     <div class="col-md-10">
-        <input type="text" id="lastName" name="LastName" required class="form-control" onkeypress="BlockNumbers(event)" @*onkeyup="validateLastName(this.value)"*@><br>
+        <input type="text" id="lastName" name="LastName" required class="form-control" onkeypress="BlockNumbers(event)" @*onkeyup="validateLastName(this.value)"*@>
         <span id="LnErrMsg" style="color:red; display:none;">Last Name must be at least 3 characters and contain only letters.</span>
         <span class="Lname-error"></span>
     </div>
@@ -23,11 +23,12 @@
 <div class="form-group">
     <label for="role">Role:</label>
     <div class="col-md-10">
-        <select id="role" name="role" required class="form-control" @*onchange="validateRole(this.value)"*@>
-            <option value="">Select a role</option>
+        <select id="role" name="Role" required class="form-control" @*onchange="validateRole(this.value)"*@>
+            <option value="Undefined">Select a role</option>
             <option value="Teacher">Teacher</option>
             <option value="Student">Student</option>
-        </select><br>
+        </select>
+        <span id="RErrMsg" style="color:red; display:none;">You must select a Role.</span>
         <span class="role-error"></span>
     </div>
 </div>
@@ -35,9 +36,9 @@
 <div class="form-group">
     <label for="dateOfBirth">Date of Birth:</label>
     <div class="col-md-10">
-        <input type="date" id="dateOfBirth" name="DateOfBirth" required class="form-control" @*onchange="validateDOB(this.value)"*@><br>
-        <span id="DOBErrMsg" style="color:red; display:none;">Please enter a valid date of birth (MM-DD-YYYY).</span></br>
-        <span id="DOBFErrMsg" style="color:red; display:none;">Date of birth cannot be in the future.</span></br>
+        <input type="date" id="dateOfBirth" name="DateOfBirth" required class="form-control" @*onchange="validateDOB(this.value)"*@>
+        <span id="DOBErrMsg" style="color:red; display:none;">Please enter a valid date of birth (MM-DD-YYYY).</span>
+        <span id="DOBFErrMsg" style="color:red; display:none;">Date of birth cannot be in the future.</span>
         <span id="DOBAErrMsg" style="color:red; display:none;">You must be at least 18 years old.</span>
         <span class="DOB-error"></span>
     </div>
@@ -46,7 +47,7 @@
 <div class="form-group">
     <label for="department">Department:</label>
     <div class="col-md-10">
-        <input type="text" id="department" name="Department" required class="form-control" @*onkeyup="validateDepartment(this.value)"*@><br>
+        <input type="text" id="department" name="Department" required class="form-control" @*onkeyup="validateDepartment(this.value)"*@>
         <span id="departmentErrMsg" style="color:red; display:none;">Department must be atleast 3 characters and should not start with a number.</span>
         <span class="department-error"></span>
     </div>
@@ -55,7 +56,7 @@
 <div class="form-group">
     <label for="enrollmentDate">Enrollment Date:</label>
     <div class="col-md-10">
-        <input type="date" id="enrollmentDate" name="EnrollmentDate" required class="form-control" @*onchange="validateEnrollmentD(this.value)"*@><br>
+        <input type="date" id="enrollmentDate" name="EnrollmentDate" required class="form-control" @*onchange="validateEnrollmentD(this.value)"*@>
         <span id="enrollmentDateErrMsg" style="color:red; display:none;">Please enter a valid enrollment date (MM-DD-YYYY).</span>
         <span class="EnrollmentD-error"></span>
     </div>
