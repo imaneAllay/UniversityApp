@@ -9,6 +9,7 @@ using System.Web.Helpers;
 using System.Web.Mvc;
 using BCrypt.Net;
 using System.Text.RegularExpressions;
+using System.Diagnostics;
 
 namespace School.Controllers
 {
@@ -99,14 +100,51 @@ namespace School.Controllers
             else {
                 
                 _context.Users.InsertOne(user);
+                // Cookies 
+
+                UserCookie userCookie = new UserCookie();
+                userCookie.FirstName = user.FirstName;
+                userCookie.LastName = user.LastName;
+                userCookie.Role = user.Role;
+
+                SetCookie(userCookie);
+                CheckCookie();
+
+
                 return Content("1");
+
+                
+
+
             }
 
+            
 
 
         }
 
+        
 
+        public void SetCookie(UserCookie userCookie)
+        {
+            HttpCookie c = new HttpCookie("Imane");
+            c["FirstName"] = userCookie.FirstName;
+            c["LastName"] = userCookie.LastName;
+            c["Role"] = userCookie.Role.ToString();
+         
+            c.Expires = DateTime.Now.AddDays(1);
+            Response.Cookies.Add(c);
+
+        }
+
+        public void CheckCookie()
+        {
+            if (Request.Cookies["Imane"] != null)
+            {
+                //autologin 
+
+            }
+        }
 
     }
 }
