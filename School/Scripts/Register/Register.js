@@ -266,7 +266,7 @@ function previousSection() {
 }
 
 function Close() {
-    window.location.href = '/Home/Login';
+    window.location.href = '/Home/Login(User)';
 }
 
 function RegisterBtnClicked() {
