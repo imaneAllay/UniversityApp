@@ -4,8 +4,10 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Text;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 using System.Web.UI.WebControls;
 
 namespace School.Controllers
@@ -19,8 +21,11 @@ namespace School.Controllers
         {
             if (Request.Cookies["Imane"] != null)
             {
-                var cookie = Request.Cookies["Imane"];
-                var userCookie = Newtonsoft.Json.JsonConvert.DeserializeObject<UserCookie>(cookie.Value);
+               
+                var cookie = Convert.FromBase64String(Request.Cookies["Imane"].Value);
+                var output = MachineKey.Unprotect(cookie, "ProtectCookie");
+                string result = Encoding.UTF8.GetString(output);
+                var userCookie = Newtonsoft.Json.JsonConvert.DeserializeObject<UserCookie>(result);
 
                 if (userCookie.Role == UserRole.Teacher)
                 {
@@ -106,6 +111,8 @@ namespace School.Controllers
             Response.Cookies.Add(c);
 
         }
+
+      
     }
 
 

@@ -11,6 +11,7 @@ using BCrypt.Net;
 using System.Text.RegularExpressions;
 using System.Diagnostics;
 using System.Web.Security;
+using System.Text;
 
 namespace School.Controllers
 {
@@ -126,8 +127,11 @@ namespace School.Controllers
         {
            
             var jsonStr = Newtonsoft.Json.JsonConvert.SerializeObject(userCookie);
+            var cookieContent = Encoding.UTF8.GetBytes(jsonStr);
+            var encryptedValue = Convert.ToBase64String(MachineKey.Protect(cookieContent,"ProtectCookie"));
             HttpCookie c = new HttpCookie("Imane");
-            c.Value = jsonStr;
+            c.Value = encryptedValue;
+           
             c.Expires = DateTime.Now.AddDays(1);
             Response.Cookies.Add(c);
 
