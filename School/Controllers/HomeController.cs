@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Web;
 using System.Web.Mvc;
 using System.Web.UI.WebControls;
 
@@ -16,6 +17,20 @@ namespace School.Controllers
 
         public ActionResult Login()
         {
+            if (Request.Cookies["Imane"] != null)
+            {
+                var cookie = Request.Cookies["Imane"];
+                var userCookie = Newtonsoft.Json.JsonConvert.DeserializeObject<UserCookie>(cookie.Value);
+
+                if (userCookie.Role == UserRole.Teacher)
+                {
+                    return RedirectToAction("TeacherD", "Teacher");
+                }
+                else if (userCookie.Role == UserRole.Student)
+                {
+                    return RedirectToAction("StudentD", "Student");
+                }
+            }
             var user = new User();
             return View("Login");
         }
@@ -34,6 +49,14 @@ namespace School.Controllers
             if (authenticatedUser != null)
             {
                 var userRole = authenticatedUser.Role;
+                UserCookie userCookie = new UserCookie()
+                {
+                    FirstName = authenticatedUser.FirstName,
+                    LastName = authenticatedUser.LastName,
+                    Role = authenticatedUser.Role
+                };
+
+                SetCookie(userCookie);
 
                 if (userRole == UserRole.Teacher)
                 {
@@ -43,6 +66,7 @@ namespace School.Controllers
                 {
                     return RedirectToAction("StudentD", "Student");
                 }
+                
             }
 
             Content("-1");
@@ -51,9 +75,40 @@ namespace School.Controllers
 
 
 
+        //public ActionResult CheckCookie()
+        //{
+        //    if (Request.Cookies["Imane"] != null)
+        //    {
+        //        var cookie = Request.Cookies["Imane"];
+        //        var userCookie = Newtonsoft.Json.JsonConvert.DeserializeObject<UserCookie>(cookie.Value);
 
+        //        if (userCookie.Role == UserRole.Teacher)
+        //        {
+        //            return RedirectToAction("TeacherD", "Teacher");
+        //        }
+        //        else if (userCookie.Role == UserRole.Student)
+        //        {
+        //            return RedirectToAction("StudentD", "Student");
+        //        }
+        //    }
 
+        //    return View("Login");
+        //}
 
+        public void SetCookie(UserCookie userCookie)
+        {
+            // conver a model to Json - save to cookie
+            var jsonStr = Newtonsoft.Json.JsonConvert.SerializeObject(userCookie);
+            HttpCookie c = new HttpCookie("Imane");
+            // one single string and assign it to the value
+            c.Value = jsonStr;
+            c.Expires = DateTime.Now.AddDays(1);
+            Response.Cookies.Add(c);
 
+        }
     }
+
+
+
 }
+ 

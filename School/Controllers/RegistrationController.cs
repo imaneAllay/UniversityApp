@@ -10,6 +10,7 @@ using System.Web.Mvc;
 using BCrypt.Net;
 using System.Text.RegularExpressions;
 using System.Diagnostics;
+using System.Web.Security;
 
 namespace School.Controllers
 {
@@ -31,7 +32,7 @@ namespace School.Controllers
         }
 
         [HttpPost]
-        public ActionResult Register( User user)
+        public ActionResult Register(User user)
         {
             // if (!user.ValidateUsername())
             //{
@@ -57,12 +58,12 @@ namespace School.Controllers
             //{
             //    return Content("fn");
 
-                //}
-           if (!user.ValidateLastName())
+            //}
+            if (!user.ValidateLastName())
             {
                 return Content("ln");
             }
-         
+
             else if (user.ValidateRole())
             {
                 return Content("r");
@@ -97,54 +98,45 @@ namespace School.Controllers
             //{
             //    return Content("en");
             //}
-            else {
-                
-                _context.Users.InsertOne(user);
-                // Cookies 
+            else
+            {
 
-                UserCookie userCookie = new UserCookie();
-                userCookie.FirstName = user.FirstName;
-                userCookie.LastName = user.LastName;
-                userCookie.Role = user.Role;
+
+                _context.Users.InsertOne(user);
+               
+                UserCookie userCookie = new UserCookie()
+                {
+                    FirstName = user.FirstName,
+                    LastName = user.LastName,
+                    Role = user.Role
+                };
 
                 SetCookie(userCookie);
-                CheckCookie();
-
-
+               
                 return Content("1");
 
-                
-
-
             }
-
-            
-
-
         }
+            // conver a model to Json - save to cookie
+            // one single string and assign it to the value
+            // Encrypt the string - save it to cookie
+            // Decrypt the cookie value = json string - convert again to the model
 
-        
-
-        public void SetCookie(UserCookie userCookie)
+            public void SetCookie(UserCookie userCookie)
         {
+           
+            var jsonStr = Newtonsoft.Json.JsonConvert.SerializeObject(userCookie);
             HttpCookie c = new HttpCookie("Imane");
-            c["FirstName"] = userCookie.FirstName;
-            c["LastName"] = userCookie.LastName;
-            c["Role"] = userCookie.Role.ToString();
-         
+            c.Value = jsonStr;
             c.Expires = DateTime.Now.AddDays(1);
             Response.Cookies.Add(c);
 
         }
 
-        public void CheckCookie()
-        {
-            if (Request.Cookies["Imane"] != null)
-            {
-                //autologin 
+       
 
-            }
-        }
+
+
 
     }
 }

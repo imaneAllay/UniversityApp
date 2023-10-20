@@ -266,7 +266,7 @@ function previousSection() {
 }
 
 function Close() {
-    window.location.href = '/Home/Login(User)';
+    window.location.href = '/Home/Login';
 }
 
 function RegisterBtnClicked() {
@@ -277,7 +277,7 @@ function RegisterBtnClicked() {
         url: '/Registration/Register', 
         data: collectedData,
         success: function (response) {
-            console.log(response);
+            /*console.log(response);*/
 
             switch (String(response)) {
 
@@ -322,6 +322,7 @@ function RegisterBtnClicked() {
                     break;
                 case "1": // popup
                     showSuccessModal();
+              /*      console.log("Success")*/
                     break;
             }
         },
