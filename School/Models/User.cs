@@ -1,9 +1,8 @@
 ﻿using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 using System;
-using System.ComponentModel.DataAnnotations;
-using MongoDB.Driver;
 using System.Text.RegularExpressions;
+using BCrypt.Net;
 
 namespace School.Models
 {
@@ -86,6 +85,12 @@ namespace School.Models
         //    string DepartmentReg = @"^[A-Za-z\s]{3,50}$";
         //    Regex re = new Regex(DepartmentReg);
         //    return !string.IsNullOrEmpty(Department) && re.IsMatch(Department);
+        //}
+        
+        //public void HashPassword (string Password)
+        //{
+        //    var passwordHash = BCrypt.HashPassword(Password);
+
         //}
 
 

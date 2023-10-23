@@ -12,6 +12,7 @@ using System.Text.RegularExpressions;
 using System.Diagnostics;
 using System.Web.Security;
 using System.Text;
+using School.Utils;
 
 namespace School.Controllers
 {
@@ -125,16 +126,10 @@ namespace School.Controllers
 
             public void SetCookie(UserCookie userCookie)
         {
-           
-            var jsonStr = Newtonsoft.Json.JsonConvert.SerializeObject(userCookie);
-            var cookieContent = Encoding.UTF8.GetBytes(jsonStr);
-            var encryptedValue = Convert.ToBase64String(MachineKey.Protect(cookieContent,"ProtectCookie"));
             HttpCookie c = new HttpCookie("Imane");
-            c.Value = encryptedValue;
-           
+            c.Value = Utils.Utils.Encrypt(userCookie);
             c.Expires = DateTime.Now.AddDays(1);
             Response.Cookies.Add(c);
-
         }
 
        
