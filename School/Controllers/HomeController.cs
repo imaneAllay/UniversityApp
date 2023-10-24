@@ -21,12 +21,14 @@ namespace School.Controllers
         {
             if (Request.Cookies["Imane"] != null)
             {
-               
-                var cookie = Convert.FromBase64String(Request.Cookies["Imane"].Value);
-                var output = MachineKey.Unprotect(cookie, "ProtectCookie");
-                string result = Encoding.UTF8.GetString(output);
-                var userCookie = Newtonsoft.Json.JsonConvert.DeserializeObject<UserCookie>(result);
+                // web config 
+                // utils folder 
+                // Encrypt/Decrypt functions 
+                // URL encryption
 
+                var getCookie = Request.Cookies["Imane"].Value;
+
+                UserCookie userCookie = Utils.Utils.Decrypt(getCookie);
                 if (userCookie.Role == UserRole.Teacher)
                 {
                     return RedirectToAction("TeacherD", "Teacher");
@@ -61,7 +63,7 @@ namespace School.Controllers
                     Role = authenticatedUser.Role
                 };
 
-                SetCookie(userCookie);
+               
 
                 if (userRole == UserRole.Teacher)
                 {
@@ -100,17 +102,7 @@ namespace School.Controllers
         //    return View("Login");
         //}
 
-        public void SetCookie(UserCookie userCookie)
-        {
-            // conver a model to Json - save to cookie
-            var jsonStr = Newtonsoft.Json.JsonConvert.SerializeObject(userCookie);
-            HttpCookie c = new HttpCookie("Imane");
-            // one single string and assign it to the value
-            c.Value = jsonStr;
-            c.Expires = DateTime.Now.AddDays(1);
-            Response.Cookies.Add(c);
-
-        }
+       
 
       
     }
