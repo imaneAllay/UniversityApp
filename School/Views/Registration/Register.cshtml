@@ -26,13 +26,13 @@
 
                         <div id="Part1">
                             @Html.Partial("~/Views/Registration/_Part1.cshtml")
-                            <button type="button" onclick="nextSection()" class="custom-button">Next</button>
+                            <button type="button" onclick="nextSection()" class="custom-button float-right">Next</button>
 
                         </div>
 
                         <div id="Part2" style="display: none;">
                             @Html.Partial("~/Views/Registration/_Part2.cshtml")
-                            <button onclick="previousSection()" class="custom-button">Previous</button>
+                            <button onclick="previousSection()" class="custom-button float-left">Previous</button>
 
                         </div>
 
@@ -58,7 +58,7 @@
                             </div>
                         </div>
 
-                        <input type="button" value="Register" id="registerButton" onclick="RegisterBtnClicked();" class="custom-button" style="display: none;">
+                        <input type="button" value="Register"  id="registerButton" onclick="RegisterBtnClicked();" class="custom-button" style="display: none;">
 
                     </form>
 
